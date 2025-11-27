@@ -1,104 +1,70 @@
-# SecureGen - Secure Password Generator
+# Getting Started with Create React App
 
-SecureGen is a modern, secure, and client-side password generator application. It allows users to generate strong, uncrackable passwords instantly within their browser, ensuring maximum privacy and security.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-![SecureGen Logo](./frontend/public/logo192.png)
+## Available Scripts
 
-## 🚀 Features
+In the project directory, you can run:
 
-*   **Secure Generation:** Uses cryptographically strong random number generation (CSPRNG) for maximum entropy.
-*   **Client-Side Only:** All passwords are generated locally in the browser. No data is ever sent to a server.
-*   **Customizable:**
-    *   Adjustable password length (4-64 characters).
-    *   Toggle Uppercase, Lowercase, Numbers, and Symbols.
-*   **Strength Meter:** Real-time visual feedback on password strength.
-*   **One-Click Copy:** Easy copy-to-clipboard functionality with toast notifications.
-*   **Responsive Design:** Fully responsive UI optimized for mobile, tablet, and desktop.
-*   **Dark Mode:** Built-in dark mode support.
-*   **SEO Optimized:** Includes meta tags, sitemap, and structured data for better search visibility.
+### `npm start`
 
-## 🛠️ Tech Stack
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-*   **Frontend:** React.js (Create React App)
-*   **Styling:** Tailwind CSS, Shadcn UI (Radix Primitives)
-*   **Icons:** Lucide React
-*   **Routing:** React Router DOM
-*   **SEO:** React Helmet Async
-*   **Build Tool:** Webpack (via CRA)
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-## 📂 Project Structure
+### `npm test`
 
-```
-/app
-├── frontend/               # React Frontend Application
-│   ├── public/             # Static assets (index.html, robots.txt, sitemap.xml)
-│   ├── src/
-│   │   ├── components/     # Reusable UI components
-│   │   │   ├── layout/     # Header, Footer, Logo
-│   │   │   ├── password/   # Password generator logic & UI
-│   │   │   ├── seo/        # SEO component
-│   │   │   └── ui/         # Shadcn UI primitives
-│   │   ├── lib/            # Utility functions (password logic, styling)
-│   │   ├── pages/          # Page components (Home, About, Privacy, Terms)
-│   │   ├── App.js          # Main App component
-│   │   └── index.css       # Global styles & Tailwind directives
-│   ├── package.json        # Frontend dependencies
-│   └── tailwind.config.js  # Tailwind configuration
-└── README.md               # Project Documentation
-```
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-## ⚡ Getting Started
+### `npm run build`
 
-### Prerequisites
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-*   Node.js (v14 or higher)
-*   Yarn or npm
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-### Installation
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-1.  Clone the repository:
-    ```bash
-    git clone https://github.com/yourusername/securegen.git
-    cd securegen
-    ```
+### `npm run eject`
 
-2.  Navigate to the frontend directory:
-    ```bash
-    cd frontend
-    ```
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-3.  Install dependencies:
-    ```bash
-    yarn install
-    ```
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-4.  Start the development server:
-    ```bash
-    yarn start
-    ```
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-    The app will run at `http://localhost:3000`.
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## 🚢 Deployment
+## Learn More
 
-This project is ready for deployment on platforms like Vercel, Netlify, or any static site host.
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-### Build for Production
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-To create an optimized production build:
+### Code Splitting
 
-```bash
-cd frontend
-yarn build
-```
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-The output will be in the `frontend/build` directory.
+### Analyzing the Bundle Size
 
-## 🔒 Security
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-*   **Zero-Knowledge:** We do not store or transmit any passwords.
-*   **Entropy:** Uses `window.crypto.getRandomValues()` for cryptographic randomness.
+### Making a Progressive Web App
 
-## 📄 License
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-This project is open source and available under the [MIT License](LICENSE).
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
