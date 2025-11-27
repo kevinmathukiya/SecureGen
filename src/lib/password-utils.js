@@ -62,3 +62,16 @@ export const generatePassword = (length, options) => {
       default: return "bg-gray-200";
     }
   };
+
+  // Get color value for inline styles (fallback)
+  export const getStrengthColorValue = (score) => {
+    switch (score) {
+      case 0: return "#ef4444"; // red-500
+      case 1: return "#f87171"; // red-400
+      case 2: return "#fb923c"; // orange-400
+      case 3: return "#facc15"; // yellow-400
+      case 4: return "#4ade80"; // green-400
+      case 5: return "#16a34a"; // green-600
+      default: return "#e5e7eb"; // gray-200
+    }
+  };
