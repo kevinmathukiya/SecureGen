@@ -3,10 +3,34 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { PasswordGenerator } from '@/components/password/PasswordGenerator';
 import { Shield, Lock, Zap, CheckCircle2 } from 'lucide-react';
+import Seo from '@/components/seo/Seo';
 
 const Home = () => {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "SecureGen Password Generator",
+    "url": "https://securegen.app",
+    "description": "Generate strong, secure passwords instantly with our free online tool. Client-side generation ensures your data never leaves your browser.",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": "Customizable length, Uppercase, Lowercase, Numbers, Symbols, Strength meter"
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
+      <Seo 
+        title="Free Secure Password Generator"
+        description="Generate strong, uncrackable passwords instantly. 100% free, secure, and runs entirely in your browser. Customize length and characters for maximum security."
+        keywords="password generator, secure password, random password, strong password, password security, online password tool"
+        canonicalUrl="https://securegen.app/"
+        schema={schema}
+      />
       <Header />
       
       <main className="flex-1">
@@ -80,34 +104,38 @@ const Home = () => {
           </div>
         </section>
 
-        {/* SEO Content Block */}
+        {/* SEO Content Block - Rewritten for Natural Flow */}
         <section className="py-16 md:py-24">
           <div className="container px-4 md:px-6 max-w-4xl">
             <div className="prose prose-lg dark:prose-invert mx-auto">
-              <h2 className="font-heading text-3xl font-bold mb-6">The Importance of Strong Passwords</h2>
+              <h2 className="font-heading text-3xl font-bold mb-6">Why Strong Passwords Are Your Best Defense</h2>
               <p>
-                In today's digital age, your password is the first line of defense against cyber threats. 
-                Weak passwords like "123456" or "password" are the leading cause of data breaches. 
-                Using a random password generator ensures your credentials are unpredictable and resistant to brute-force attacks.
+                We live in a world where our digital lives are just as important as our physical ones. From banking apps to social media, everything is protected by a password. Unfortunately, many of us still rely on simple, easy-to-remember passwords like "123456" or "password123". While these might be convenient, they are also the first keys hackers try when attempting to breach an account.
+              </p>
+              <p>
+                A truly strong password acts as a formidable barrier. It's not just about length; it's about unpredictability. By using a random mix of uppercase and lowercase letters, numbers, and special symbols, you create a combination that is exponentially harder for automated hacking tools to crack.
               </p>
               
-              <h3 className="font-heading text-2xl font-semibold mt-8 mb-4">Best Practices for Password Security</h3>
+              <h3 className="font-heading text-2xl font-semibold mt-8 mb-4">How to Keep Your Accounts Safe</h3>
+              <p>
+                Creating a secure password is just the first step. Here are a few simple habits that can significantly boost your online security:
+              </p>
               <ul className="space-y-3 list-none pl-0">
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="h-6 w-6 text-green-500 flex-shrink-0 mt-0.5" />
-                  <span><strong>Length Matters:</strong> Use at least 12 characters. 16+ is recommended.</span>
+                  <span><strong>Go Long:</strong> Aim for at least 12 characters. The longer the password, the more secure it is.</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="h-6 w-6 text-green-500 flex-shrink-0 mt-0.5" />
-                  <span><strong>Mix it Up:</strong> Combine uppercase, lowercase, numbers, and symbols.</span>
+                  <span><strong>Mix It Up:</strong> Don't rely on words found in a dictionary. Use a chaotic mix of characters.</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="h-6 w-6 text-green-500 flex-shrink-0 mt-0.5" />
-                  <span><strong>Unique Every Time:</strong> Never reuse passwords across different sites.</span>
+                  <span><strong>One Site, One Password:</strong> Never reuse passwords. If one site gets breached, your other accounts remain safe.</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="h-6 w-6 text-green-500 flex-shrink-0 mt-0.5" />
-                  <span><strong>Use a Manager:</strong> Store your complex passwords in a trusted password manager.</span>
+                  <span><strong>Use a Password Manager:</strong> You don't need to memorize complex passwords. Let a trusted password manager handle them for you.</span>
                 </li>
               </ul>
             </div>
