@@ -1,11 +1,27 @@
-import React from 'react';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { PasswordGenerator } from '@/components/password/PasswordGenerator';
 import { Shield, Lock, Zap, CheckCircle2 } from 'lucide-react';
-import Seo from '@/components/seo/Seo';
 
-const Home = () => {
+export const metadata = {
+  title: 'Free Secure Password Generator | SecureGen',
+  description: 'Generate strong, uncrackable passwords instantly. 100% free, secure, and runs entirely in your browser. Customize length and characters for maximum security.',
+  keywords: 'password generator, secure password, random password, strong password, password security, online password tool',
+  openGraph: {
+    title: 'Free Secure Password Generator | SecureGen',
+    description: 'Generate strong, uncrackable passwords instantly. 100% free, secure, and runs entirely in your browser.',
+    url: 'https://securegen.app/',
+    siteName: 'SecureGen',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Free Secure Password Generator | SecureGen',
+    description: 'Generate strong, uncrackable passwords instantly. 100% free, secure, and runs entirely in your browser.',
+  },
+};
+
+export default function Home() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
@@ -24,12 +40,9 @@ const Home = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
-      <Seo 
-        title="Free Secure Password Generator"
-        description="Generate strong, uncrackable passwords instantly. 100% free, secure, and runs entirely in your browser. Customize length and characters for maximum security."
-        keywords="password generator, secure password, random password, strong password, password security, online password tool"
-        canonicalUrl="https://securegen.app/"
-        schema={schema}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
       <Header />
       
@@ -146,6 +159,5 @@ const Home = () => {
       <Footer />
     </div>
   );
-};
+}
 
-export default Home;

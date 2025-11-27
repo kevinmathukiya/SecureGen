@@ -1,6 +1,6 @@
 import React from 'react';
-import { cn } from '@/lib/utils';
-import { getStrengthLabel, getStrengthColor } from '@/lib/password-utils';
+import { cn } from '../../lib/utils';
+import { getStrengthLabel, getStrengthColor } from '../../lib/password-utils';
 
 export const StrengthMeter = ({ score }) => {
   const label = getStrengthLabel(score);

@@ -1,17 +1,20 @@
-import React from 'react';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
-import Seo from '@/components/seo/Seo';
 
-const Privacy = () => {
+export const metadata = {
+  title: 'Privacy Policy | SecureGen',
+  description: 'Read our Privacy Policy. We prioritize your privacy with client-side generation and zero data collection.',
+  keywords: 'privacy policy, data privacy, secure password generator privacy',
+  openGraph: {
+    title: 'Privacy Policy | SecureGen',
+    description: 'Read our Privacy Policy. We prioritize your privacy with client-side generation and zero data collection.',
+    url: 'https://securegen.app/privacy',
+  },
+};
+
+export default function Privacy() {
   return (
     <div className="min-h-screen flex flex-col bg-background">
-      <Seo 
-        title="Privacy Policy"
-        description="Read our Privacy Policy. We prioritize your privacy with client-side generation and zero data collection."
-        keywords="privacy policy, data privacy, secure password generator privacy"
-        canonicalUrl="https://securegen.app/privacy"
-      />
       <Header />
       <main className="flex-1 container py-16 max-w-3xl">
         <h1 className="font-heading text-4xl font-bold mb-8">Privacy Policy</h1>
@@ -39,6 +42,5 @@ const Privacy = () => {
       <Footer />
     </div>
   );
-};
+}
 
-export default Privacy;

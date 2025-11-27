@@ -1,13 +1,15 @@
+'use client'
+
 import React, { useState, useEffect, useCallback } from 'react';
 import { Copy, RefreshCw, Check, ShieldCheck, Settings2 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Slider } from '@/components/ui/slider';
-import { Switch } from '@/components/ui/switch';
-import { Label } from '@/components/ui/label';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { Button } from '../ui/button';
+import { Slider } from '../ui/slider';
+import { Switch } from '../ui/switch';
+import { Label } from '../ui/label';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../ui/card';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
 import { toast } from 'sonner';
-import { generatePassword, calculateStrength } from '@/lib/password-utils';
+import { generatePassword, calculateStrength } from '../../lib/password-utils';
 import { StrengthMeter } from './StrengthMeter';
 
 export const PasswordGenerator = () => {

@@ -1,17 +1,20 @@
-import React from 'react';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
-import Seo from '@/components/seo/Seo';
 
-const Terms = () => {
+export const metadata = {
+  title: 'Terms of Service | SecureGen',
+  description: 'Review our Terms of Service regarding the use of the SecureGen password generator tool.',
+  keywords: 'terms of service, usage terms, disclaimer',
+  openGraph: {
+    title: 'Terms of Service | SecureGen',
+    description: 'Review our Terms of Service regarding the use of the SecureGen password generator tool.',
+    url: 'https://securegen.app/terms',
+  },
+};
+
+export default function Terms() {
   return (
     <div className="min-h-screen flex flex-col bg-background">
-      <Seo 
-        title="Terms of Service"
-        description="Review our Terms of Service regarding the use of the SecureGen password generator tool."
-        keywords="terms of service, usage terms, disclaimer"
-        canonicalUrl="https://securegen.app/terms"
-      />
       <Header />
       <main className="flex-1 container py-16 max-w-3xl">
         <h1 className="font-heading text-4xl font-bold mb-8">Terms of Service</h1>
@@ -34,6 +37,5 @@ const Terms = () => {
       <Footer />
     </div>
   );
-};
+}
 
-export default Terms;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Logo } from './Logo';
 
 export const Footer = () => {
@@ -17,8 +17,8 @@ export const Footer = () => {
           <div>
             <h3 className="font-heading font-semibold mb-4">Product</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><Link to="/" className="hover:text-primary transition-colors">Password Generator</Link></li>
-              <li><Link to="/about" className="hover:text-primary transition-colors">About Us</Link></li>
+              <li><Link href="/" className="hover:text-primary transition-colors">Password Generator</Link></li>
+              <li><Link href="/about" className="hover:text-primary transition-colors">About Us</Link></li>
               <li><a href="#" className="hover:text-primary transition-colors">Source Code</a></li>
             </ul>
           </div>
@@ -26,9 +26,9 @@ export const Footer = () => {
           <div>
             <h3 className="font-heading font-semibold mb-4">Legal</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><Link to="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
-              <li><Link to="/terms" className="hover:text-primary transition-colors">Terms of Service</Link></li>
-              <li><Link to="/cookies" className="hover:text-primary transition-colors">Cookie Policy</Link></li>
+              <li><Link href="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
+              <li><Link href="/terms" className="hover:text-primary transition-colors">Terms of Service</Link></li>
+              <li><Link href="/cookies" className="hover:text-primary transition-colors">Cookie Policy</Link></li>
             </ul>
           </div>
 
