@@ -1,23 +1,8 @@
 import { PasswordGenerator } from '@/components/password/PasswordGenerator';
 import { Shield, Lock, Zap, CheckCircle2 } from 'lucide-react';
+import { generateMetadata as genMeta, pageMetadata } from '@/lib/seo-metadata';
 
-export const metadata = {
-  title: 'Free Secure Password Generator | SecureGen',
-  description: 'Generate strong, uncrackable passwords instantly. 100% free, secure, and runs entirely in your browser. Customize length and characters for maximum security.',
-  keywords: 'password generator, secure password, random password, strong password, password security, online password tool',
-  openGraph: {
-    title: 'Free Secure Password Generator | SecureGen',
-    description: 'Generate strong, uncrackable passwords instantly. 100% free, secure, and runs entirely in your browser.',
-    url: 'https://securegen.app/',
-    siteName: 'SecureGen',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Free Secure Password Generator | SecureGen',
-    description: 'Generate strong, uncrackable passwords instantly. 100% free, secure, and runs entirely in your browser.',
-  },
-};
+export const metadata = genMeta(pageMetadata.home);
 
 export default function Home() {
   const schema = {
@@ -28,6 +13,13 @@ export default function Home() {
     "description": "Generate strong, secure passwords instantly with our free online tool. Client-side generation ensures your data never leaves your browser.",
     "applicationCategory": "UtilityApplication",
     "operatingSystem": "Any",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://securegen.app/logo.svg",
+      "width": 32,
+      "height": 32
+    },
+    "image": "https://securegen.app/logo.svg",
     "offers": {
       "@type": "Offer",
       "price": "0",

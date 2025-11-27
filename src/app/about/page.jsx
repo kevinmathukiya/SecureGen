@@ -1,13 +1,6 @@
-export const metadata = {
-  title: 'About Us | SecureGen',
-  description: 'Learn about SecureGen\'s mission to make the internet safer with secure, client-side password generation.',
-  keywords: 'about securegen, password security mission, secure password tool team',
-  openGraph: {
-    title: 'About Us | SecureGen',
-    description: 'Learn about SecureGen\'s mission to make the internet safer with secure, client-side password generation.',
-    url: 'https://securegen.app/about',
-  },
-};
+import { generateMetadata as genMeta, pageMetadata } from '@/lib/seo-metadata';
+
+export const metadata = genMeta(pageMetadata.about);
 
 export default function About() {
   return (

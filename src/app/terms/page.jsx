@@ -1,13 +1,6 @@
-export const metadata = {
-  title: 'Terms of Service | SecureGen',
-  description: 'Review our Terms of Service regarding the use of the SecureGen password generator tool.',
-  keywords: 'terms of service, usage terms, disclaimer',
-  openGraph: {
-    title: 'Terms of Service | SecureGen',
-    description: 'Review our Terms of Service regarding the use of the SecureGen password generator tool.',
-    url: 'https://securegen.app/terms',
-  },
-};
+import { generateMetadata as genMeta, pageMetadata } from '@/lib/seo-metadata';
+
+export const metadata = genMeta(pageMetadata.terms);
 
 export default function Terms() {
   return (

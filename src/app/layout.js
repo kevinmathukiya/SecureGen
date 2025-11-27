@@ -4,6 +4,7 @@ import { Toaster } from '@/components/ui/sonner'
 import { ThemeProvider } from '@/components/providers/theme-provider'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
+import { baseMetadata } from '@/lib/seo-metadata'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -18,10 +19,7 @@ const spaceGrotesk = Space_Grotesk({
   display: 'swap',
 })
 
-export const metadata = {
-  title: 'SecureGen - Free Secure Password Generator',
-  description: 'Generate strong, secure passwords instantly. 100% free, secure, and runs entirely in your browser.',
-}
+export const metadata = baseMetadata
 
 export default function RootLayout({ children }) {
   return (

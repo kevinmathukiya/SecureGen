@@ -1,13 +1,6 @@
-export const metadata = {
-  title: 'Privacy Policy | SecureGen',
-  description: 'Read our Privacy Policy. We prioritize your privacy with client-side generation and zero data collection.',
-  keywords: 'privacy policy, data privacy, secure password generator privacy',
-  openGraph: {
-    title: 'Privacy Policy | SecureGen',
-    description: 'Read our Privacy Policy. We prioritize your privacy with client-side generation and zero data collection.',
-    url: 'https://securegen.app/privacy',
-  },
-};
+import { generateMetadata as genMeta, pageMetadata } from '@/lib/seo-metadata';
+
+export const metadata = genMeta(pageMetadata.privacy);
 
 export default function Privacy() {
   return (
