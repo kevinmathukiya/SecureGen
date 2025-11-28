@@ -9,17 +9,17 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "SecureGen Password Generator",
-    "url": "https://securegen.app",
+    "url": "https://passwordgens.online",
     "description": "Generate strong, secure passwords instantly with our free online tool. Client-side generation ensures your data never leaves your browser.",
     "applicationCategory": "UtilityApplication",
     "operatingSystem": "Any",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://securegen.app/logo.svg",
+      "url": "https://passwordgens.online/logo.svg",
       "width": 32,
       "height": 32
     },
-    "image": "https://securegen.app/logo.svg",
+    "image": "https://passwordgens.online/logo.svg",
     "offers": {
       "@type": "Offer",
       "price": "0",

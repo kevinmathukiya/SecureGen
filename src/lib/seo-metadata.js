@@ -3,7 +3,7 @@
  * This file provides reusable metadata functions for all pages
  */
 
-const SITE_URL = 'https://securegen.app';
+const SITE_URL = 'https://passwordgens.online';
 const SITE_NAME = 'SecureGen';
 const DEFAULT_IMAGE = '/og-image.png';
 const TWITTER_HANDLE = '@securegen';
@@ -42,7 +42,7 @@ export const baseMetadata = {
     description: 'Generate strong, secure passwords instantly. 100% free, secure, and runs entirely in your browser.',
     images: [
       {
-        url: DEFAULT_IMAGE,
+        url: `${SITE_URL}${DEFAULT_IMAGE}`,
         width: 1200,
         height: 630,
         alt: 'SecureGen - Free Secure Password Generator',
@@ -54,7 +54,7 @@ export const baseMetadata = {
     title: 'SecureGen - Free Secure Password Generator',
     description: 'Generate strong, secure passwords instantly. 100% free, secure, and runs entirely in your browser.',
     creator: TWITTER_HANDLE,
-    images: [DEFAULT_IMAGE],
+    images: [`${SITE_URL}${DEFAULT_IMAGE}`],
   },
   category: 'Security',
   classification: 'Utility',
@@ -103,7 +103,7 @@ export function generateMetadata(pageMetadata = {}) {
   // Build OpenGraph image
   const ogImages = ogImage ? [
     {
-      url: ogImage,
+      url: ogImage.startsWith('http') ? ogImage : `${SITE_URL}${ogImage}`,
       width: 1200,
       height: 630,
       alt: ogImageAlt || title || baseMetadata.openGraph.title,

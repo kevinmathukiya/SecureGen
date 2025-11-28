@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://securegen.app/sitemap.xml
+Sitemap: https://passwordgens.online/sitemap.xml
