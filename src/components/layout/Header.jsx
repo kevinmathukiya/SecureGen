@@ -36,10 +36,6 @@ export const Header = () => {
           <Button variant="ghost" size="icon" onClick={toggleTheme} className="rounded-full">
             {mounted && theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
           </Button>
-          <Button variant="outline" size="sm" className="hidden sm:flex gap-2">
-            <Github className="h-4 w-4" />
-            <span>Star on GitHub</span>
-          </Button>
         </div>
       </div>
     </header>
