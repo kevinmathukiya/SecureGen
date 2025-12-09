@@ -5,7 +5,7 @@
 
 const SITE_URL = 'https://passwordgens.online';
 const SITE_NAME = 'SecureGen';
-const DEFAULT_IMAGE = '/og-image.png';
+const DEFAULT_IMAGE = '/logo.svg';
 const TWITTER_HANDLE = '@securegen';
 const LOGO_URL = '/logo.svg';
 const FAVICON_URL = '/favicon.svg';
@@ -64,7 +64,7 @@ export const baseMetadata = {
       { url: LOGO_URL, type: 'image/svg+xml', sizes: '32x32' },
     ],
     apple: [
-      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+      { url: LOGO_URL, sizes: '180x180', type: 'image/svg+xml' },
     ],
   },
   manifest: '/manifest.json',
