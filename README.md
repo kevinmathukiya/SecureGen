@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+# SecureGen - Free Secure Password Generator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, privacy-first password generator that runs entirely in your browser. Generate strong, secure passwords instantly with zero data collection.
+
+**Website:** [https://passwordgens.online](https://passwordgens.online)
+
+## Features
+
+✅ **100% Secure** - All password generation happens client-side in your browser  
+✅ **Zero Data Collection** - No tracking, no cookies, no data storage  
+✅ **Customizable** - Control password length and character types  
+✅ **Fast & Reliable** - Cryptographically secure random generation  
+✅ **Privacy-First** - Open source and transparent  
+✅ **Fully Responsive** - Works on desktop, tablet, and mobile  
+
+## Tech Stack
+
+- **Framework:** Next.js 14+ with App Router
+- **Styling:** Tailwind CSS
+- **UI Components:** shadcn/ui
+- **Language:** JavaScript/React
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+ and npm/yarn installed
+
+### Installation
+
+```bash
+git clone repo name
+cd SecureGen
+npm install
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser
 
 ## Available Scripts
 
-In the project directory, you can run:
+- `npm run dev` - Development server with hot reload
+- `npm run build` - Production build
+- `npm start` - Run production build
+- `npm run lint` - Code quality check
 
-### `npm start`
+## Security & Privacy
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Client-Side Generation:** Passwords generated entirely in your browser
+- **No Backend:** No server-side processing or data transmission
+- **No Tracking:** No analytics, no cookies, no user data collection
+- **Open Source:** Code is transparent and auditable
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Browser Support
 
-### `npm test`
+Chrome/Edge 90+, Firefox 88+, Safari 14+, Opera 76+
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

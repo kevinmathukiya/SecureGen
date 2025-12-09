@@ -18,7 +18,7 @@ export const baseMetadata = {
     template: '%s | SecureGen',
   },
   description: 'Generate strong, secure passwords instantly. 100% free, secure, and runs entirely in your browser. No data collection, client-side generation for maximum privacy.',
-  keywords: ['password generator', 'secure password', 'random password', 'strong password', 'password security', 'online password tool', 'free password generator', 'cryptographic password'],
+  keywords: ['password generator', 'secure password', 'random password', 'strong password', 'password security', 'online password tool', 'free password generator', 'cryptographic password', 'generate password online', 'best password generator', 'password generator no tracking', 'client-side password generator'],
   authors: [{ name: SITE_NAME }],
   creator: SITE_NAME,
   publisher: SITE_NAME,
@@ -140,7 +140,7 @@ export const pageMetadata = {
   home: {
     title: 'Free Secure Password Generator | SecureGen',
     description: 'Generate strong, uncrackable passwords instantly. 100% free, secure, and runs entirely in your browser. Customize length and characters for maximum security.',
-    keywords: ['password strength', 'cryptographic password'],
+    keywords: ['password strength', 'cryptographic password', 'generate password', 'online password generator', 'strong password online', 'password generator free'],
     url: '/',
   },
   

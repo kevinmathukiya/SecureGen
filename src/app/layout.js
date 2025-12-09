@@ -22,9 +22,21 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata = baseMetadata
 
 export default function RootLayout({ children }) {
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "SecureGen",
+    "url": "https://passwordgens.online",
+    "logo": "https://passwordgens.online/logo.svg",
+    "sameAs": []
+  };
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="min-h-screen flex flex-col bg-background">
             <Header />
