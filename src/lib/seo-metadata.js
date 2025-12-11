@@ -64,9 +64,6 @@ export const baseMetadata = {
       { url: FAVICON_URL, type: 'image/svg+xml' },
       { url: LOGO_URL, type: 'image/svg+xml', sizes: '32x32' },
     ],
-    apple: [
-      { url: LOGO_URL, sizes: '180x180', type: 'image/svg+xml' },
-    ],
   },
   manifest: '/manifest.json',
   other: {
