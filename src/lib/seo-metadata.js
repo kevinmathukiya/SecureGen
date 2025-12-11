@@ -60,6 +60,7 @@ export const baseMetadata = {
   classification: 'Utility',
   icons: {
     icon: [
+      { url: '/favicon.ico', type: 'image/x-icon' },
       { url: FAVICON_URL, type: 'image/svg+xml' },
       { url: LOGO_URL, type: 'image/svg+xml', sizes: '32x32' },
     ],
