@@ -66,6 +66,9 @@ export const baseMetadata = {
     ],
   },
   manifest: '/manifest.json',
+   alternates: {
+    canonical: SITE_URL,
+  },
   other: {
     'apple-mobile-web-app-capable': 'yes',
     'apple-mobile-web-app-status-bar-style': 'default',
