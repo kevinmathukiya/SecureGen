@@ -1,39 +1,33 @@
-const today = new Date().toISOString().split('T')[0];
+const express = require('express');
+const app = express();
 
-const urls = [
-  {
-    loc: 'https://passwordgens.online/',
-    changefreq: 'weekly',
-    priority: '1.0',
-  },
-  {
-    loc: 'https://passwordgens.online/about',
-    changefreq: 'monthly',
-    priority: '0.8',
-  },
-  {
-    loc: 'https://passwordgens.online/privacy',
-    changefreq: 'monthly',
-    priority: '0.5',
-  },
-  {
-    loc: 'https://passwordgens.online/terms',
-    changefreq: 'monthly',
-    priority: '0.5',
-  },
-];
+app.get('/sitemap.xml', (req, res) => {
+  const today = new Date().toISOString().split('T')[0];
 
-const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+  const urls = [
+    { loc: 'https://passwordgens.online/', changefreq: 'weekly', priority: '1.0' },
+    { loc: 'https://passwordgens.online/about', changefreq: 'monthly', priority: '0.8' },
+    { loc: 'https://passwordgens.online/privacy', changefreq: 'monthly', priority: '0.5' },
+    { loc: 'https://passwordgens.online/terms', changefreq: 'monthly', priority: '0.5' },
+  ];
+
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls
   .map(
-    (url) => `
+    (u) => `
   <url>
-    <loc>${url.loc}</loc>
+    <loc>${u.loc}</loc>
     <lastmod>${today}</lastmod>
-    <changefreq>${url.changefreq}</changefreq>
-    <priority>${url.priority}</priority>
+    <changefreq>${u.changefreq}</changefreq>
+    <priority>${u.priority}</priority>
   </url>`
   )
   .join('')}
 </urlset>`;
+
+  res.setHeader('Content-Type', 'application/xml');
+  res.status(200).send(sitemap);
+});
+
+app.listen(3000, () => console.log('Server running'));
