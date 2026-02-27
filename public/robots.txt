@@ -2,17 +2,5 @@
 User-agent: *
 Allow: /
 
-# Specific rules for Google
-User-agent: Googlebot
-Allow: /
-
-# Specific rules for Bing
-User-agent: Bingbot
-Allow: /
-
-# Disallow crawling of private/admin areas (if any)
-Disallow: /admin/
-Disallow: /private/
-
 # Sitemap location
 Sitemap: https://passwordgens.online/sitemap.xml
