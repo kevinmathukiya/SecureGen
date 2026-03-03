@@ -1,10 +1,13 @@
 import { PasswordGenerator } from '@/components/password/PasswordGenerator';
-import { Shield, Lock, Zap, CheckCircle2 } from 'lucide-react';
+import { Shield, Lock, Zap, CheckCircle2, ArrowRight } from 'lucide-react';
 import { generateMetadata as genMeta, pageMetadata } from '@/lib/seo-metadata';
+import { getBlogPosts } from '@/lib/blog';
+import Link from 'next/link';
 
 export const metadata = genMeta(pageMetadata.home);
 
-export default function Home() {
+export default async function Home() {
+  const blogPosts = await getBlogPosts();
   const schema = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
@@ -139,6 +142,74 @@ export default function Home() {
                 </li>
               </ul>
             </div>
+          </div>
+        </section>
+
+        {/* Latest Blog Posts Section */}
+        <section className="py-16 md:py-24 bg-muted/30">
+          <div className="container px-4 md:px-6">
+            <div className="text-center mb-12">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">Latest Security Tips</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Stay informed with our latest articles on password security and best practices.
+              </p>
+            </div>
+
+            {blogPosts && blogPosts.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                {blogPosts.slice(0, 2).map((post) => (
+                  <Link
+                    key={post.slug}
+                    href={`/blog/${post.slug}`}
+                    className="group flex flex-col rounded-2xl border bg-background overflow-hidden shadow-sm transition-all hover:shadow-lg hover:border-primary"
+                  >
+                    {post.image && (
+                      <div className="relative h-48 bg-gradient-to-br from-blue-500/10 to-purple-500/10 overflow-hidden">
+                        <img
+                          src={post.image}
+                          alt={post.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                    )}
+                    <div className="flex-1 flex flex-col p-6">
+                      <h3 className="font-heading text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+                        {post.title}
+                      </h3>
+                      <p className="text-muted-foreground text-sm mb-4 flex-1">
+                        {post.description}
+                      </p>
+                      <div className="flex items-center justify-between pt-4 border-t">
+                        <span className="text-xs text-muted-foreground">
+                          {new Date(post.date).toLocaleDateString('en-US', {
+                            month: 'short',
+                            day: 'numeric',
+                            year: 'numeric',
+                          })}
+                        </span>
+                        <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-12">
+                <p className="text-muted-foreground">Check back soon for security tips and tutorials!</p>
+              </div>
+            )}
+
+            {blogPosts && blogPosts.length > 0 && (
+              <div className="flex justify-center pt-4">
+                <Link
+                  href="/blog"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-primary bg-primary text-primary-foreground hover:bg-primary/90 transition-colors font-medium"
+                >
+                  View All Articles
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            )}
           </div>
         </section>
     </>
