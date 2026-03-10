@@ -41,33 +41,33 @@ const createHeading = (level, className) => {
 // Components object for MDX
 export const mdxComponents = {
     code: ({children}) => (
-        <code className="text-base !mt-1 bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded font-mono">
+        <code className="text-base bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded font-mono">
             {children}
         </code>
     ),
     p: ({children}) => (
-        <p className="text-base !mt-3 leading-relaxed">{children}</p>
+        <p className="text-base leading-relaxed">{children}</p>
     ),
-    h1: createHeading(1, "text-3xl font-bold !mt-8 !mb-4"),
-    h2: createHeading(2, "text-2xl font-bold !mt-6 !mb-3"),
-    h3: createHeading(3, "text-xl font-bold !mt-5 !mb-2"),
-    h4: createHeading(4, "text-lg font-bold !mt-4 !mb-2"),
+    h1: createHeading(1, "text-3xl font-bold mt-8 mb-4"),
+    h2: createHeading(2, "text-2xl font-bold mt-6 mb-3"),
+    h3: createHeading(3, "text-xl font-bold mt-5 mb-2"),
+    h4: createHeading(4, "text-lg font-bold mt-4 mb-2"),
     ul: ({children}) => (
-        <ul className="pl-6 !mt-3 list-disc space-y-1">{children}</ul>
+        <ul className="pl-6 list-disc space-y-1">{children}</ul>
     ),
     ol: ({children}) => (
-        <ol className="pl-6 !mt-3 list-decimal space-y-1">{children}</ol>
+        <ol className="pl-6 list-decimal space-y-1">{children}</ol>
     ),
     li: ({children}) => (
         <li className="text-base leading-relaxed">{children}</li>
     ),
     blockquote: ({children}) => (
-        <blockquote className="border-l-4 border-gray-300 dark:border-gray-600 pl-4 italic !mt-4 !mb-4 text-gray-700 dark:text-gray-300">
+        <blockquote className="border-l-4 border-gray-300 dark:border-gray-600 pl-4 italic mt-4 mb-4 text-gray-700 dark:text-gray-300">
             {children}
         </blockquote>
     ),
     table: ({children}) => (
-        <div className="overflow-x-auto !mt-4">
+        <div className="overflow-x-auto mt-4">
             <table className="table-auto border-collapse border border-gray-300 dark:border-gray-600 rounded-md w-full">
                 {children}
             </table>
@@ -88,7 +88,7 @@ export const mdxComponents = {
                 src={src}
                 width={800}
                 height={400}
-                className="rounded-lg !mt-4 !mb-4 w-full h-auto"
+                className="rounded-lg mt-4 mb-4 w-full h-auto"
             />
         ) : null,
     a: ({href, children}) => (

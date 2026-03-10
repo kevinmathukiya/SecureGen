@@ -79,7 +79,84 @@ module.exports = {
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in": "fade-in 0.5s ease-out forwards",
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: 'none',
+            color: 'inherit',
+            a: {
+              color: 'hsl(var(--primary))',
+              textDecoration: 'none',
+              '&:hover': {
+                textDecoration: 'underline',
+              },
+            },
+            h1: {
+              fontSize: '2.25rem',
+              fontWeight: '700',
+              lineHeight: '2.5rem',
+              marginTop: '2rem',
+              marginBottom: '1rem',
+            },
+            h2: {
+              fontSize: '1.875rem',
+              fontWeight: '600',
+              lineHeight: '2.25rem',
+              marginTop: '1.5rem',
+              marginBottom: '0.75rem',
+            },
+            h3: {
+              fontSize: '1.5rem',
+              fontWeight: '600',
+              lineHeight: '2rem',
+              marginTop: '1.25rem',
+              marginBottom: '0.5rem',
+            },
+            p: {
+              marginTop: '1rem',
+              marginBottom: '1rem',
+              lineHeight: '1.75',
+            },
+            ul: {
+              marginTop: '1rem',
+              marginBottom: '1rem',
+            },
+            ol: {
+              marginTop: '1rem',
+              marginBottom: '1rem',
+            },
+            li: {
+              marginTop: '0.25rem',
+              marginBottom: '0.25rem',
+            },
+            blockquote: {
+              fontStyle: 'italic',
+              borderLeft: '4px solid hsl(var(--border))',
+              paddingLeft: '1rem',
+              margin: '1.5rem 0',
+            },
+            code: {
+              backgroundColor: 'hsl(var(--muted))',
+              padding: '0.125rem 0.25rem',
+              borderRadius: '0.25rem',
+              fontSize: '0.875em',
+            },
+            'code::before': {
+              content: '""',
+            },
+            'code::after': {
+              content: '""',
+            },
+            pre: {
+              backgroundColor: 'hsl(var(--muted))',
+              padding: '1rem',
+              borderRadius: '0.5rem',
+              overflow: 'auto',
+            },
+          },
+        },
+      },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 };

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useMDXComponents } from '@/lib/mdx-components';
+import { mdxComponents } from '@/lib/mdx-components';
 import { MDXRemote } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
 
@@ -11,7 +11,7 @@ export default function BlogPostPage({ params }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const components = useMDXComponents();
+  const components = mdxComponents;
 
   useEffect(() => {
     async function loadBlogPost() {
@@ -67,8 +67,8 @@ export default function BlogPostPage({ params }) {
   }
 
   return (
-    <article className="min-h-screen bg-white dark:bg-gray-950 py-8 px-4 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-3xl">
+    <article className="min-h-screen bg-white dark:bg-gray-950 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-2xl">
         {/* Back to blog link */}
         <a
           href="/blog"
@@ -123,7 +123,7 @@ export default function BlogPostPage({ params }) {
         )}
 
         {/* Article content */}
-        <div className="prose prose-lg dark:prose-invert max-w-none prose-headings:scroll-mt-20">
+        <div className="prose prose-xl dark:prose-invert max-w-none prose-headings:scroll-mt-20">
           {mdxSource && <MDXRemote {...mdxSource} components={components} />}
         </div>
 
