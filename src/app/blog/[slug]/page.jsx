@@ -123,7 +123,7 @@ export default function BlogPostPage({ params }) {
         )}
 
         {/* Article content */}
-        <div className="prose prose-xl dark:prose-invert max-w-none prose-headings:scroll-mt-20">
+        <div className="prose prose-xl dark:prose-invert max-w-none prose-headings:scroll-mt-20 prose-img:mx-auto prose-img:max-w-full prose-img:h-auto prose-img:rounded-lg">
           {mdxSource && <MDXRemote {...mdxSource} components={components} />}
         </div>
 

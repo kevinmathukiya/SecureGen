@@ -31,11 +31,54 @@ export default async function Home() {
     "featureList": "Customizable length, Uppercase, Lowercase, Numbers, Symbols, Strength meter"
   };
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a password generator?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A password generator creates random, unique passwords in seconds. SecureGen uses client-side cryptography so your password never leaves your device."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why do strong passwords matter?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Strong passwords resist brute-force attacks, dictionary attacks, and credential stuffing. They are longer, unpredictable, and unique per account."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do hackers crack passwords?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Attackers use brute-force, rainbow tables, phishing, and leaked credential lists. A random password generator removes patterns and dramatically increases entropy."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is SecureGen really private?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. All passwords are generated in your browser. No password data is sent to our servers, stored, or logged."
+        }
+      }
+    ]
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       {/* Hero Section */}
         <section className="relative py-16 md:py-24 lg:py-32 overflow-hidden">
@@ -67,7 +110,7 @@ export default async function Home() {
         <section className="py-16 md:py-24 bg-muted/30">
           <div className="container px-4 md:px-6">
             <div className="text-center mb-16">
-              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">Why Use SecureGen?</h2>
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">Benefits of a Random Password Generator</h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
                 We prioritize your security with a tool that's easy to use and technically robust.
               </p>
@@ -107,40 +150,73 @@ export default async function Home() {
           </div>
         </section>
 
+        {/* Trust & Privacy Section */}
+        <section className="py-16 md:py-24 bg-muted/30">
+          <div className="container px-4 md:px-6 max-w-4xl mx-auto prose prose-lg dark:prose-invert">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">100% Private: Why Your Passwords Never Leave Your Browser</h2>
+            <p>SecureGen generates every password via client-side cryptographic APIs. That means no data is sent to a server, no logs are stored, and your generated text never leaves your device.</p>
+            <p>Using a client-side password generator is one of the quickest ways to protect yourself from data leakage and remote breaches. Remember: if your password generator uploads or saves passwords in the cloud, your attack surface increases significantly.</p>
+            <ul className="list-disc pl-5">
+              <li><strong>Client-side computation:</strong> all random bytes are created locally with secure entropy sources.</li>
+              <li><strong>No tracking:</strong> zero analytics tracking on generated values, no telemetry data collection.</li>
+              <li><strong>Open mindset:</strong> use copied passwords immediately and clear them from memory when done.</li>
+            </ul>
+          </div>
+        </section>
+
         {/* SEO Content Block - Rewritten for Natural Flow */}
         <section className="py-16 md:py-24">
           <div className="container px-4 md:px-6 max-w-4xl">
             <div className="prose prose-lg dark:prose-invert mx-auto">
-              <h2 className="font-heading text-3xl font-bold mb-6">Why Strong Passwords Are Your Best Defense</h2>
+              <h2 className="font-heading text-3xl font-bold mb-6">What Is a Password Generator?</h2>
               <p>
-                We live in a world where our digital lives are just as important as our physical ones. From banking apps to social media, everything is protected by a password. Unfortunately, many of us still rely on simple, easy-to-remember passwords like "123456" or "password123". While these might be convenient, they are also the first keys hackers try when attempting to breach an account.
+                A password generator creates strong, random passwords automatically. It helps you avoid weak passwords such as "password123" or birthdates, which are easy to guess. SecureGen generates values entirely on your device, so sensitive data is never shared with third-party servers.
               </p>
+
+              <h2 className="font-heading text-3xl font-bold mt-10 mb-6">Why Strong Passwords Matter</h2>
               <p>
-                A truly strong password acts as a formidable barrier. It's not just about length; it's about unpredictability. By using a random mix of uppercase and lowercase letters, numbers, and special symbols, you create a combination that is exponentially harder for automated hacking tools to crack.
+                Weak passwords are the most common cause of account breaches. A secure password should be long, unique, and random. This makes brute-force and dictionary attacks ineffective, and prevents credential stuffing across services.
               </p>
-              
-              <h3 className="font-heading text-2xl font-semibold mt-8 mb-4">How to Keep Your Accounts Safe</h3>
+
+              <h2 className="font-heading text-3xl font-bold mt-10 mb-6">How Hackers Crack Passwords</h2>
               <p>
-                Creating a secure password is just the first step. Here are a few simple habits that can significantly boost your online security:
+                Attackers use tools that guess millions of passwords per second. They rely on leaked passwords, dictionary lists, and pattern-based guessing. SecureGen stops that by creating passwords with high entropy and no predictable patterns.
               </p>
+
+              <h3 className="font-heading text-2xl font-semibold mt-8 mb-4">Tips to Keep Your Password Safe</h3>
               <ul className="space-y-3 list-none pl-0">
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="h-6 w-6 text-green-500 flex-shrink-0 mt-0.5" />
-                  <span><strong>Go Long:</strong> Aim for at least 12 characters. The longer the password, the more secure it is.</span>
+                  <span><strong>Use length:</strong> 16+ characters for maximum strength.</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="h-6 w-6 text-green-500 flex-shrink-0 mt-0.5" />
-                  <span><strong>Mix It Up:</strong> Don't rely on words found in a dictionary. Use a chaotic mix of characters.</span>
+                  <span><strong>Use variety:</strong> upper, lower, numbers, symbols.</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="h-6 w-6 text-green-500 flex-shrink-0 mt-0.5" />
-                  <span><strong>One Site, One Password:</strong> Never reuse passwords. If one site gets breached, your other accounts remain safe.</span>
+                  <span><strong>Never reuse:</strong> unique password per site/account.</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="h-6 w-6 text-green-500 flex-shrink-0 mt-0.5" />
-                  <span><strong>Use a Password Manager:</strong> You don't need to memorize complex passwords. Let a trusted password manager handle them for you.</span>
+                  <span><strong>Use manager:</strong> store passwords safely and auto-fill securely.</span>
                 </li>
               </ul>
+
+              <h2 className="font-heading text-3xl font-bold mt-10 mb-6">Frequently Asked Questions (FAQ)</h2>
+              <div>
+                <h3 className="font-heading text-2xl font-semibold mt-6">Can I use SecureGen for all my accounts?</h3>
+                <p>Yes. Use SecureGen to generate unique passwords for each account. Avoid repeating credentials across sites.</p>
+
+                <h3 className="font-heading text-2xl font-semibold mt-6">Do you store my generated passwords?</h3>
+                <p>No. SecureGen runs fully client-side and does not store or transmit generated passwords.</p>
+
+                <h3 className="font-heading text-2xl font-semibold mt-6">What is password entropy?</h3>
+                <p>Entropy measures randomness. Higher entropy means a password is harder for attackers to crack. SecureGen maximizes entropy with mixed character sets.</p>
+
+                <h3 className="font-heading text-2xl font-semibold mt-6">How often should I update passwords?</h3>
+                <p>Update critical passwords 6-12 months or immediately after a breach notification. Use SecureGen to quickly create updated credentials.</p>
+              </div>
             </div>
           </div>
         </section>

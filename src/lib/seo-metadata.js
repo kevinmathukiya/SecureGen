@@ -160,8 +160,8 @@ export function generateMetadata(pageMetadata = {}) {
 // Pre-configured metadata for common pages
 export const pageMetadata = {
   home: {
-    title: 'Free Secure Password Generator | SecureGen',
-    description: 'Generate strong, uncrackable passwords instantly. 100% free, secure, and runs entirely in your browser. Customize length and characters for maximum security.',
+    title: 'Strong Password Generator – Free, Secure & Random Password Tool',
+    description: 'Generate strong, secure, and random passwords instantly. Free password generator with customizable length, symbols, and maximum security. 100% client-side, no data stored.',
     keywords: ['password strength', 'cryptographic password', 'generate password', 'online password generator', 'strong password online', 'password generator free'],
     url: '/',
   },

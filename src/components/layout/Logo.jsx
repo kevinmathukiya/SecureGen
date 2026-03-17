@@ -3,6 +3,8 @@ import React from 'react';
 export const Logo = ({ className }) => (
   <div className={`flex items-center gap-2 ${className}`}>
     <svg 
+      role="img"
+      aria-label="SecureGen logo"
       width="32" 
       height="32" 
       viewBox="0 0 32 32" 

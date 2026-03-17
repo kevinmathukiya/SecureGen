@@ -1,31 +1,15 @@
-'use client';
-
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { getBlogPosts } from '@/lib/blog';
 
-export default function BlogPage() {
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+export default async function BlogPage() {
+  let posts = [];
+  let error = null;
 
-  useEffect(() => {
-    async function loadPosts() {
-      try {
-        const response = await fetch('/api/blog');
-        if (!response.ok) {
-          throw new Error('Failed to load blog posts');
-        }
-        const data = await response.json();
-        setPosts(data.posts || []);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    loadPosts();
-  }, []);
+  try {
+    posts = await getBlogPosts();
+  } catch (err) {
+    error = err instanceof Error ? err.message : 'Failed to load blog posts';
+  }
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950 py-12 px-4 sm:px-6 lg:px-8">
@@ -40,12 +24,7 @@ export default function BlogPage() {
           </p>
         </div>
 
-        {loading ? (
-          <div className="text-center py-12">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-            <p className="text-gray-600 dark:text-gray-400">Loading blog posts...</p>
-          </div>
-        ) : error ? (
+        {error ? (
           <div className="text-center py-12">
             <p className="text-red-600 dark:text-red-400">Error: {error}</p>
           </div>

@@ -83,12 +83,11 @@ export const mdxComponents = {
     ),
     img: ({src, alt}) => 
         src ? (
-            <Image
+            <img
                 alt={alt || ""}
                 src={src}
-                width={800}
-                height={400}
-                className="rounded-lg mt-4 mb-4 w-full h-auto"
+                className="rounded-lg mt-4 mb-4 w-full h-auto max-w-full object-contain" 
+                loading="lazy"
             />
         ) : null,
     a: ({href, children}) => (
