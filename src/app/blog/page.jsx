@@ -1,5 +1,13 @@
 import Link from 'next/link';
 import { getBlogPosts } from '@/lib/blog';
+import { generateMetadata as genMeta } from '@/lib/seo-metadata';
+
+export const metadata = genMeta({
+  title: 'Password Security Blog | Tips, Tutorials & Best Practices',
+  description: 'Learn about password security, best practices, and stay updated with the latest tips and tutorials from SecureGen. Expert insights on creating and managing secure passwords.',
+  keywords: ['password security blog', 'password tips', 'security tutorials', 'password best practices', 'cybersecurity blog', 'password management'],
+  url: '/blog',
+});
 
 export default async function BlogPage() {
   let posts = [];
@@ -11,9 +19,71 @@ export default async function BlogPage() {
     error = err instanceof Error ? err.message : 'Failed to load blog posts';
   }
 
+  // Generate structured data for blog listing
+  const blogSchema = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "SecureGen Password Security Blog",
+    "description": "Tips, tutorials, and insights about password security and generation.",
+    "url": "https://passwordgens.online/blog",
+    "publisher": {
+      "@type": "Organization",
+      "name": "SecureGen",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://passwordgens.online/logo.svg"
+      }
+    },
+    "blogPost": posts.map(post => ({
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.description,
+      "author": {
+        "@type": "Person",
+        "name": post.author
+      },
+      "datePublished": post.date,
+      "url": `https://passwordgens.online/blog/${post.slug}`,
+      "image": post.image,
+      "publisher": {
+        "@type": "Organization",
+        "name": "SecureGen"
+      }
+    }))
+  };
+
+  // Breadcrumb structured data
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://passwordgens.online"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://passwordgens.online/blog"
+      }
+    ]
+  };
+
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-4xl">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <div className="min-h-screen bg-white dark:bg-gray-950 py-12 px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-4xl">
         {/* Header */}
         <div className="mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
@@ -89,5 +159,6 @@ export default async function BlogPage() {
         )}
       </div>
     </div>
+    </>
   );
 }

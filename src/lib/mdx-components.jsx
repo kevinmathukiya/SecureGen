@@ -83,12 +83,21 @@ export const mdxComponents = {
     ),
     img: ({src, alt}) => 
         src ? (
-            <img
-                alt={alt || ""}
-                src={src}
-                className="rounded-lg mt-4 mb-4 w-full h-auto max-w-full object-contain" 
-                loading="lazy"
-            />
+            <figure className="my-8 flex flex-col items-center">
+                <img
+                    alt={alt || "Blog image"}
+                    src={src}
+                    className="rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 w-full h-auto max-w-full object-cover" 
+                    loading="lazy"
+                    width="800"
+                    height="600"
+                />
+                {alt && (
+                    <figcaption className="mt-3 text-sm text-gray-600 dark:text-gray-400 text-center italic">
+                        {alt}
+                    </figcaption>
+                )}
+            </figure>
         ) : null,
     a: ({href, children}) => (
         <Link

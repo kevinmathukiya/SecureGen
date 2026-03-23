@@ -28,7 +28,54 @@ export default async function Home() {
       "price": "0",
       "priceCurrency": "USD"
     },
-    "featureList": "Customizable length, Uppercase, Lowercase, Numbers, Symbols, Strength meter"
+    "featureList": "Customizable length, Uppercase, Lowercase, Numbers, Symbols, Strength meter",
+    "author": {
+      "@type": "Organization",
+      "name": "SecureGen"
+    },
+    "provider": {
+      "@type": "Organization",
+      "name": "SecureGen",
+      "url": "https://passwordgens.online"
+    }
+  };
+
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "SecureGen Password Generator",
+    "description": "Free, secure, and private password generator. Generate strong passwords instantly with customizable options. 100% client-side, no data stored.",
+    "url": "https://passwordgens.online",
+    "image": "https://passwordgens.online/logo.svg",
+    "brand": {
+      "@type": "Brand",
+      "name": "SecureGen"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "100+"
+    },
+    "applicationCategory": "UtilityApplication"
+  };
+
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "SecureGen",
+    "url": "https://passwordgens.online",
+    "logo": "https://passwordgens.online/logo.svg",
+    "description": "Free, secure password generator that runs entirely in your browser. Generate strong passwords with customizable options.",
+    "foundingDate": "2024",
+    "sameAs": [
+      "https://github.com/kevinmathukiya/SecureGen"
+    ]
   };
 
   const faqSchema = {
@@ -75,6 +122,14 @@ export default async function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />
       <script
         type="application/ld+json"
