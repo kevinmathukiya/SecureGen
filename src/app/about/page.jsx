@@ -5,7 +5,7 @@ export const metadata = genMeta(pageMetadata.about);
 export default function About() {
   return (
     <div className="container py-16 max-w-3xl">
-        <h1 className="font-heading text-4xl font-bold mb-8">About SecureGen</h1>
+        <h1 className="font-heading text-4xl font-bold mb-8">About SecureGen: Our Mission for Password Security & Privacy</h1>
         <div className="prose dark:prose-invert">
           <p className="text-lg text-muted-foreground mb-6">
             SecureGen was built with a single mission: to make the internet a safer place, one password at a time.

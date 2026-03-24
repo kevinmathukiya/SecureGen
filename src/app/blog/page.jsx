@@ -1,13 +1,8 @@
 import Link from 'next/link';
 import { getBlogPosts } from '@/lib/blog';
-import { generateMetadata as genMeta } from '@/lib/seo-metadata';
+import { generateMetadata as genMeta, pageMetadata } from '@/lib/seo-metadata';
 
-export const metadata = genMeta({
-  title: 'Password Security Blog | Tips, Tutorials & Best Practices',
-  description: 'Learn about password security, best practices, and stay updated with the latest tips and tutorials from SecureGen. Expert insights on creating and managing secure passwords.',
-  keywords: ['password security blog', 'password tips', 'security tutorials', 'password best practices', 'cybersecurity blog', 'password management'],
-  url: '/blog',
-});
+export const metadata = genMeta(pageMetadata.blog);
 
 export default async function BlogPage() {
   let posts = [];
@@ -87,7 +82,7 @@ export default async function BlogPage() {
         {/* Header */}
         <div className="mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            Blog
+            Password Security Blog: Expert Tips, Guides & Tutorials
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-400">
             Tips, tutorials, and insights about password security and generation.

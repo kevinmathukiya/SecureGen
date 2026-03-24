@@ -38,6 +38,28 @@ export default function RootLayout({ children }) {
           gtag('config', 'G-7F7M4VXX0P');`}
         </Script>
         
+        <Script
+          id="organization-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "SecureGen",
+              "url": "https://passwordgens.online",
+              "logo": "https://passwordgens.online/logo.svg",
+              "description": "Free, secure, and private password generator. Generate strong passwords instantly with customizable options. 100% client-side, no data stored.",
+              "sameAs": [
+                "https://github.com/kevinmathukiya/SecureGen"
+              ],
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "Customer Support",
+                "url": "https://github.com/kevinmathukiya/SecureGen/issues"
+              }
+            })
+          }}
+        />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="min-h-screen flex flex-col bg-background">
             <Header />

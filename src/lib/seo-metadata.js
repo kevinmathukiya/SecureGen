@@ -85,6 +85,9 @@ keywords: [
       { url: FAVICON_URL, type: 'image/svg+xml' },
       { url: LOGO_URL, type: 'image/svg+xml', sizes: '32x32' },
     ],
+    apple: [
+      { url: '/apple-touch-icon.png' },
+    ],
   },
   manifest: '/manifest.json',
    alternates: {
@@ -160,26 +163,35 @@ export function generateMetadata(pageMetadata = {}) {
 // Pre-configured metadata for common pages
 export const pageMetadata = {
   home: {
-    title: 'Strong Password Generator – Free, Secure & Random Password Tool',
-    description: 'Generate strong, secure, and random passwords instantly. Free password generator with customizable length, symbols, and maximum security. 100% client-side, no data stored.',
-    keywords: ['password strength', 'cryptographic password', 'generate password', 'online password generator', 'strong password online', 'password generator free'],
+    title: 'Free Secure Password Generator (4–64 Characters) | Client-Side & Private | SecureGen',
+    description: 'Generate strong, random passwords instantly with SecureGen. Free password generator with customizable length, uppercase, lowercase, numbers, and symbols. 100% client-side—no data collected, no server storage. Instant strength meter included.',
+    keywords: ['password generator', 'strong password generator', 'random password generator', 'free password generator', 'online password generator', 'secure password maker', 'cryptographic password generator', 'password length customizer', 'password strength checker', 'password generator online free'],
     url: '/',
+    ogImageAlt: 'SecureGen - Free Secure Password Generator | 4-64 Characters',
   },
   
   about: {
-    title: 'About Us | SecureGen',
-    description: 'Learn about SecureGen\'s mission to make the internet safer with secure, client-side password generation. Privacy-first, open-source password generator.',
-    keywords: ['about securegen', 'password security mission', 'secure password tool team', 'privacy-first password generator', 'open source password tool'],
+    title: 'About SecureGen | Our Mission for Password Security & Privacy',
+    description: 'Discover SecureGen\'s mission: making the internet safer, one password at a time. Learn how we built a powerful yet simple, privacy-first password generator. Open-source, transparent, and trusted by security-conscious users worldwide.',
+    keywords: ['about securegen', 'password security mission', 'privacy-first password tool', 'open source password generator', 'secure password creator', 'password generation technology', 'client-side password security', 'transparent password tool', 'cybersecurity innovation'],
     url: '/about',
-    ogImageAlt: 'About SecureGen',
+    ogImageAlt: 'About SecureGen - Our Password Security Mission',
+  },
+
+  blog: {
+    title: 'Password Security Blog | Expert Tips, Guides & Tutorials | SecureGen',
+    description: 'Expert insights on password security, best practices, and practical guides. Learn password management strategies, multi-factor authentication, phishing prevention, and how to create unbreakable passwords. Updated weekly with actionable security tips.',
+    keywords: ['password security blog', 'password tips', 'security tutorials', 'password best practices', 'cybersecurity blog', 'password management guide', 'authentication security', 'phishing prevention', 'password security guide', 'password management tips'],
+    url: '/blog',
+    ogImageAlt: 'SecureGen Blog - Password Security Tips & Tutorials',
   },
 
   privacy: {
-    title: 'Privacy Policy | SecureGen',
-    description: 'Read our Privacy Policy. We prioritize your privacy with client-side generation and zero data collection. No tracking, no cookies, no data storage.',
-    keywords: ['privacy policy', 'data privacy', 'secure password generator privacy', 'zero data collection', 'client-side privacy'],
+    title: 'Privacy Policy | SecureGen - Zero Data Collection Guarantee',
+    description: 'Our Privacy Policy: SecureGen prioritizes your privacy with 100% client-side password generation. No personal data collection, no tracking cookies, no server storage. Review our commitment to zero-data privacy and transparent data practices.',
+    keywords: ['privacy policy', 'data privacy', 'zero data collection', 'client-side privacy', 'no tracking', 'password privacy guarantee', 'data security policy', 'user privacy protection', 'transparent privacy policy'],
     url: '/privacy',
-    ogImageAlt: 'Privacy Policy | SecureGen',
+    ogImageAlt: 'SecureGen Privacy Policy - Zero Data Collection',
     robots: {
       index: true,
       follow: true,
@@ -187,11 +199,11 @@ export const pageMetadata = {
   },
 
   terms: {
-    title: 'Terms of Service | SecureGen',
-    description: 'Review our Terms of Service regarding the use of the SecureGen password generator tool. Free, open-source, and provided as-is.',
-    keywords: ['terms of service', 'usage terms', 'disclaimer', 'password generator terms', 'service agreement'],
+    title: 'Terms of Service | SecureGen Password Generator',
+    description: 'SecureGen Terms of Service. Review our usage terms, legal disclaimers, and service agreement. Free, open-source password generator provided as-is. Understand your rights and our responsibilities.',
+    keywords: ['terms of service', 'usage terms', 'legal disclaimer', 'password generator agreement', 'service terms', 'user agreement', 'acceptable use policy', 'liability disclaimer'],
     url: '/terms',
-    ogImageAlt: 'Terms of Service | SecureGen',
+    ogImageAlt: 'SecureGen Terms of Service',
     robots: {
       index: true,
       follow: true,

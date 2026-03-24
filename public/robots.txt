@@ -1,5 +1,7 @@
-# Allow all bots to crawl and index the site
+# Block API routes and Next.js internals
 User-agent: *
+Disallow: /api/
+Disallow: /_next/
 Allow: /
 
 # Sitemap location
