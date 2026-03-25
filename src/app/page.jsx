@@ -153,25 +153,31 @@ export default async function Home() {
       {/* Hero Section */}
         <section className="relative py-16 md:py-24 lg:py-32 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-background pointer-events-none" />
-          <div className="container relative z-10 px-4 md:px-6">
-            <div className="flex flex-col items-center text-center space-y-8 mb-12">
-              <div className="inline-flex items-center rounded-full border px-3 py-1 text-sm font-medium bg-background/50 backdrop-blur-sm text-muted-foreground animate-fade-in">
-                <span className="flex h-2 w-2 rounded-full bg-green-500 mr-2"></span>
-                Secure & Client-side Generation
+          <div className="container relative z-10 px-4 sm:px-6 md:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center">
+              {/* Left Content */}
+              <div className="flex flex-col space-y-6 md:space-y-8">
+                <div className="inline-flex items-center rounded-full border px-2 sm:px-3 py-1 text-xs sm:text-sm font-medium bg-background/50 backdrop-blur-sm text-muted-foreground animate-fade-in w-fit">
+                  <span className="flex h-2 w-2 rounded-full bg-green-500 mr-2"></span>
+                  <span className="whitespace-nowrap">Secure & Client-side</span>
+                </div>
+                
+                <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground animate-fade-in [animation-delay:100ms] leading-tight">
+                  Generate <span className="text-primary">Secure Passwords</span> Instantly
+                </h1>
+                
+                <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-xl animate-fade-in [animation-delay:200ms] leading-relaxed">
+                  Create strong, uncrackable passwords to keep your accounts safe. 
+                  100% free, secure, and runs entirely in your browser.
+                </p>
               </div>
-              
-              <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground max-w-4xl animate-fade-in [animation-delay:100ms]">
-                Generate <span className="text-primary">Secure Passwords</span> Instantly
-              </h1>
-              
-              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl animate-fade-in [animation-delay:200ms]">
-                Create strong, uncrackable passwords to keep your accounts safe. 
-                100% free, secure, and runs entirely in your browser.
-              </p>
-            </div>
 
-            <div className="animate-fade-in [animation-delay:300ms]">
-              <PasswordGenerator />
+              {/* Right Component */}
+              <div className="flex justify-center md:justify-end animate-fade-in [animation-delay:300ms] w-full">
+                <div className="w-full max-w-sm md:max-w-none">
+                  <PasswordGenerator />
+                </div>
+              </div>
             </div>
           </div>
         </section>

@@ -1,7 +1,17 @@
 import { generateMetadata as genMeta } from '@/lib/seo-metadata';
 import { PasswordGenerator } from '@/components/password/PasswordGenerator';
+import { TrustBadges } from '@/components/ui/TrustBadges';
+import { FAQSection } from '@/components/ui/FAQSection';
 import { Lock, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import {
+  generateSoftwareApplicationSchema,
+  generateFAQSchema,
+  generateHowToSchema,
+  generateBreadcrumbSchema,
+  passwordGeneratorFAQs,
+  passwordGeneratorHowToSteps,
+} from '@/lib/schema-generators';
 
 export const metadata = genMeta({
   title: 'Secure Password Generator | Bank-Grade Security Passwords | SecureGen',
@@ -12,20 +22,43 @@ export const metadata = genMeta({
 });
 
 export default function SecurePasswordGenerator() {
-  const schemaData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "SecureGen Secure Password Generator",
-    "description": "Generate secure passwords with bank-grade cryptographic security and zero data collection.",
-    "url": "https://passwordgens.online/secure-password-generator",
-    "applicationCategory": "UtilityApplication",
-  };
+  const appSchema = generateSoftwareApplicationSchema(
+    'SecureGen Secure Password Generator',
+    'Generate secure passwords with bank-grade cryptographic security and zero data collection.',
+    'https://passwordgens.online/secure-password-generator'
+  );
+
+  const faqSchema = generateFAQSchema(passwordGeneratorFAQs);
+
+  const howtoSchema = generateHowToSchema(
+    'How to Generate Bank-Grade Secure Passwords',
+    'Step-by-step guide to generate cryptographically secure passwords using SecureGen',
+    passwordGeneratorHowToSteps
+  );
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Password Generators', url: '/password-tools' },
+    { name: 'Secure Password Generator', url: '/secure-password-generator' }
+  ]);
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(appSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howtoSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <div className="min-h-screen">
         {/* Hero Section */}
@@ -49,6 +82,11 @@ export default function SecurePasswordGenerator() {
 
             <div className="mt-12 max-w-2xl mx-auto">
               <PasswordGenerator />
+            </div>
+
+            {/* Trust Badges */}
+            <div className="mt-16">
+              <TrustBadges variant="compact" />
             </div>
           </div>
         </section>
@@ -116,26 +154,11 @@ export default function SecurePasswordGenerator() {
               <h3>Social Media & Regular Sites</h3>
               <p>Minimum 16 characters recommended. Many sites are targets for data breaches, so use strong, unique passwords everywhere.</p>
 
-              <h2>Frequently Asked Questions</h2>
-              <h3>Is SecureGen as secure as a password manager?</h3>
-              <p>
-                SecureGen and password managers serve different purposes. SecureGen generates passwords securely. A password manager stores them securely. Use both: SecureGen to create passwords, then store them in a password manager like Bitwarden or 1Password.
-              </p>
 
-              <h3>What security certifications does SecureGen have?</h3>
-              <p>
-                SecureGen is an open-source tool using standard Web Crypto APIs. While not formally certified, our code is transparent and auditable on GitHub.
-              </p>
-
-              <h3>Can I trust SecureGen with financial accounts?</h3>
-              <p>
-                Yes. SecureGen uses bank-grade cryptographic security. Your passwords are generated client-side and never transmitted. For maximum security, use SecureGen + a password manager + 2FA.
-              </p>
-
-              <h3>How does SecureGen compare to other password generators?</h3>
-              <p>
-                SecureGen offers: 100% free, open-source (transparent), client-side only (private), no login required, cryptographically secure generation, customizable length and character types. These features make it one of the most secure options available.
-              </p>
+        <FAQSection 
+          faqs={passwordGeneratorFAQs}
+          heading="Frequently Asked Questions About Secure Password Generation"
+        />
             </div>
           </div>
         </section>

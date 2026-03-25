@@ -1,7 +1,17 @@
 import { generateMetadata as genMeta } from '@/lib/seo-metadata';
 import { PasswordGenerator } from '@/components/password/PasswordGenerator';
+import { TrustBadges } from '@/components/ui/TrustBadges';
+import { FAQSection } from '@/components/ui/FAQSection';
 import { Heart, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import {
+  generateSoftwareApplicationSchema,
+  generateFAQSchema,
+  generateHowToSchema,
+  generateBreadcrumbSchema,
+  passwordGeneratorFAQs,
+  passwordGeneratorHowToSteps,
+} from '@/lib/schema-generators';
 
 export const metadata = genMeta({
   title: 'Free Online Password Generator | No Installation Required | SecureGen',
@@ -12,25 +22,47 @@ export const metadata = genMeta({
 });
 
 export default function FreePasswordGenerator() {
-  const schemaData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "SecureGen Free Online Password Generator",
-    "description": "Free online password generator without installation, registration, or signup. Generate strong passwords instantly in your browser.",
-    "url": "https://passwordgens.online/free-password-generator",
-    "applicationCategory": "UtilityApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    }
-  };
+  // Software Application Schema
+  const appSchema = generateSoftwareApplicationSchema(
+    'SecureGen Free Online Password Generator',
+    'Free online password generator without installation, registration, or signup. Generate strong passwords instantly in your browser - 100% private and secure.',
+    'https://passwordgens.online/free-password-generator'
+  );
+
+  // FAQ Schema
+  const faqSchema = generateFAQSchema(passwordGeneratorFAQs);
+
+  // HowTo Schema
+  const howtoSchema = generateHowToSchema(
+    'How to Generate a Free Strong Password Online',
+    'Step-by-step guide to generate secure passwords using SecureGen',
+    passwordGeneratorHowToSteps
+  );
+
+  // Breadcrumb Schema
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Password Generators', url: '/password-tools' },
+    { name: 'Free Password Generator', url: '/free-password-generator' }
+  ]);
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(appSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howtoSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <div className="min-h-screen">
         {/* Hero Section */}
@@ -54,6 +86,11 @@ export default function FreePasswordGenerator() {
 
             <div className="mt-12 max-w-2xl mx-auto">
               <PasswordGenerator />
+            </div>
+
+            {/* Trust Badges */}
+            <div className="mt-16">
+              <TrustBadges variant="compact" />
             </div>
           </div>
         </section>
@@ -116,36 +153,11 @@ export default function FreePasswordGenerator() {
                 </ul>
               </div>
 
-              <h2>Frequently Asked Questions</h2>
-              <h3>Is SecureGen really free forever?</h3>
-              <p>
-                Yes, 100%. SecureGen is open-source and free forever with no plans to charge. We believe password generation should be a free, universal tool.
-              </p>
 
-              <h3>Why don't you require an account?</h3>
-              <p>
-                No account means no data collection. We don't need to store anything about you. Just visit, generate, and go. Privacy by design.
-              </p>
-
-              <h3>Can I use SecureGen on my phone?</h3>
-              <p>
-                Yes! SecureGen works on any device with a web browser: phones, tablets, computers, even smart TVs with browsers.
-              </p>
-
-              <h3>Is there a limit to how many passwords I can generate?</h3>
-              <p>
-                No limit. Generate as many passwords as you need. SecureGen will generate passwords for all 100+ accounts you might have.
-              </p>
-
-              <h3>Can I download SecureGen for offline use?</h3>
-              <p>
-                SecureGen works offline! Since it's client-side only, you can use it without an internet connection once the page loads.
-              </p>
-
-              <h3>Is there anything better than the free version?</h3>
-              <p>
-                No. The "free" version is the complete version. All features are included. We don't have a limited free version - we just have SecureGen, completely free.
-              </p>
+        <FAQSection 
+          faqs={passwordGeneratorFAQs}
+          heading="Frequently Asked Questions About Our Free Password Generator"
+        />
             </div>
           </div>
         </section>

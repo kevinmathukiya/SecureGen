@@ -8,16 +8,16 @@ export const StrengthMeter = ({ score }) => {
   const activeColorValue = getStrengthColorValue(score);
 
   return (
-    <div className="w-full space-y-2">
-      <div className="flex justify-between items-center text-sm">
+    <div className="w-full space-y-2 sm:space-y-2.5">
+      <div className="flex justify-between items-center text-xs sm:text-sm">
         <span className="text-muted-foreground font-medium">Strength</span>
-        <span className={cn("font-semibold transition-colors duration-300", 
+        <span className={cn("font-semibold transition-colors duration-300 text-xs sm:text-sm", 
           score <= 2 ? "text-red-500" : score <= 3 ? "text-yellow-500" : "text-green-500"
         )}>
           {label}
         </span>
       </div>
-      <div className="flex gap-1 h-2 w-full">
+      <div className="flex gap-1 h-1.5 sm:h-2 w-full">
         {[1, 2, 3, 4, 5].map((index) => {
           const isActive = index <= score;
           return (

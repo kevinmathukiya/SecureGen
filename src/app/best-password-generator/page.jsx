@@ -1,7 +1,17 @@
 import { generateMetadata as genMeta } from '@/lib/seo-metadata';
 import { PasswordGenerator } from '@/components/password/PasswordGenerator';
+import { TrustBadges } from '@/components/ui/TrustBadges';
+import { FAQSection } from '@/components/ui/FAQSection';
 import { Zap, ArrowRight, CheckCircle2, AlertCircle } from 'lucide-react';
 import Link from 'next/link';
+import {
+  generateSoftwareApplicationSchema,
+  generateFAQSchema,
+  generateHowToSchema,
+  generateBreadcrumbSchema,
+  passwordGeneratorFAQs,
+  passwordGeneratorHowToSteps,
+} from '@/lib/schema-generators';
 
 export const metadata = genMeta({
   title: 'Best Password Generator | Free, Secure & Private | SecureGen',
@@ -12,20 +22,43 @@ export const metadata = genMeta({
 });
 
 export default function BestPasswordGenerator() {
-  const schemaData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "SecureGen - Best Password Generator",
-    "description": "The best free, private, and secure password generator. Open-source, client-side, no signup.",
-    "url": "https://passwordgens.online/best-password-generator",
-    "applicationCategory": "UtilityApplication",
-  };
+  const appSchema = generateSoftwareApplicationSchema(
+    'SecureGen - Best Password Generator',
+    'The best free, private, and secure password generator. Open-source, client-side, no signup required.',
+    'https://passwordgens.online/best-password-generator'
+  );
+
+  const faqSchema = generateFAQSchema(passwordGeneratorFAQs);
+
+  const howtoSchema = generateHowToSchema(
+    'Why SecureGen is the Best Password Generator',
+    'Learn what features make a password generator the best choice for security',
+    passwordGeneratorHowToSteps
+  );
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Password Generators', url: '/password-tools' },
+    { name: 'Best Password Generator', url: '/best-password-generator' }
+  ]);
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(appSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howtoSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <div className="min-h-screen">
         {/* Hero Section */}
@@ -49,6 +82,11 @@ export default function BestPasswordGenerator() {
 
             <div className="mt-12 max-w-2xl mx-auto">
               <PasswordGenerator />
+            </div>
+
+            {/* Trust Badges */}
+            <div className="mt-16">
+              <TrustBadges variant="compact" />
             </div>
           </div>
         </section>

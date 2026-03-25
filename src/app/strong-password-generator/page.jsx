@@ -1,7 +1,17 @@
 import { generateMetadata as genMeta } from '@/lib/seo-metadata';
 import { PasswordGenerator } from '@/components/password/PasswordGenerator';
+import { TrustBadges } from '@/components/ui/TrustBadges';
+import { FAQSection } from '@/components/ui/FAQSection';
 import { Shield, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import {
+  generateSoftwareApplicationSchema,
+  generateFAQSchema,
+  generateHowToSchema,
+  generateBreadcrumbSchema,
+  passwordGeneratorFAQs,
+  passwordGeneratorHowToSteps,
+} from '@/lib/schema-generators';
 
 export const metadata = genMeta({
   title: 'Strong Password Generator | Create Unbreakable Passwords | SecureGen',
@@ -12,116 +22,42 @@ export const metadata = genMeta({
 });
 
 export default function StrongPasswordGenerator() {
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What makes a password strong?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "A strong password is long (16+ characters), includes uppercase, lowercase, numbers, and symbols, and is completely random with no predictable patterns. SecureGen creates passwords with maximum entropy to resist brute-force attacks."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How long should a strong password be?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Security experts recommend minimum 16 characters for critical accounts. SecureGen allows up to 64 characters for maximum security. The longer your password, the harder it is for attackers to crack."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I customize my strong password?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes! SecureGen lets you choose password length (4-64 characters) and toggle character types: uppercase, lowercase, numbers, and symbols. Mix and match to meet any password requirement."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is a randomly generated password always strong?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, if it uses diverse character sets and sufficient length. Random generation eliminates human bias and predictable patterns that weaken passwords. SecureGen uses cryptographic randomness for maximum strength."
-        }
-      }
-    ]
-  };
+  const appSchema = generateSoftwareApplicationSchema(
+    'SecureGen Strong Password Generator',
+    'Create strong, unbreakable passwords with maximum entropy and cryptographic security. 16+ character passwords for maximum protection.',
+    'https://passwordgens.online/strong-password-generator'
+  );
 
-  const schemaData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "SecureGen Strong Password Generator",
-    "description": "Create strong, unbreakable passwords with maximum entropy and cryptographic security.",
-    "url": "https://passwordgens.online/strong-password-generator",
-    "applicationCategory": "UtilityApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    }
-  };
+  const faqSchema = generateFAQSchema(passwordGeneratorFAQs);
 
-  const howToSchema = {
-    "@context": "https://schema.org",
-    "@type": "HowTo",
-    "name": "How to Generate a Strong Password",
-    "description": "Step-by-step guide to creating unbreakable strong passwords using SecureGen",
-    "step": [
-      {
-        "@type": "HowToStep",
-        "position": 1,
-        "name": "Set Password Length",
-        "text": "Choose a password length of 16 characters or more. Longer passwords are exponentially more secure. SecureGen allows 4-64 characters.",
-        "image": "https://passwordgens.online/logo.svg"
-      },
-      {
-        "@type": "HowToStep",
-        "position": 2,
-        "name": "Select Character Types",
-        "text": "Enable all character types: uppercase letters, lowercase letters, numbers, and special symbols. This maximizes entropy.",
-        "image": "https://passwordgens.online/logo.svg"
-      },
-      {
-        "@type": "HowToStep",
-        "position": 3,
-        "name": "Click Generate",
-        "text": "Click the generate button to create a cryptographically random strong password instantly.",
-        "image": "https://passwordgens.online/logo.svg"
-      },
-      {
-        "@type": "HowToStep",
-        "position": 4,
-        "name": "Copy Password",
-        "text": "Click to copy the generated password to your clipboard immediately.",
-        "image": "https://passwordgens.online/logo.svg"
-      },
-      {
-        "@type": "HowToStep",
-        "position": 5,
-        "name": "Store Securely",
-        "text": "Paste the password into your password manager (Bitwarden, 1Password, etc.) for secure storage.",
-        "image": "https://passwordgens.online/logo.svg"
-      }
-    ]
-  };
+  const howtoSchema = generateHowToSchema(
+    'How to Generate a Strong Password Online',
+    'Step-by-step guide to creating secure, unbreakable passwords using SecureGen',
+    passwordGeneratorHowToSteps
+  );
 
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Password Generators', url: '/password-tools' },
+    { name: 'Strong Password Generator', url: '/strong-password-generator' }
+  ]);
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(appSchema) }}
       />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howtoSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <div className="min-h-screen">
         {/* Hero Section */}
@@ -145,6 +81,11 @@ export default function StrongPasswordGenerator() {
 
             <div className="mt-12 max-w-2xl mx-auto">
               <PasswordGenerator />
+            </div>
+
+            {/* Trust Badges */}
+            <div className="mt-16">
+              <TrustBadges variant="compact" />
             </div>
           </div>
         </section>
@@ -218,31 +159,11 @@ export default function StrongPasswordGenerator() {
                 </ul>
               </div>
 
-              <h2>Frequently Asked Questions</h2>
-              <h3>How many possible passwords can a 16-character password have?</h3>
-              <p>
-                With uppercase, lowercase, numbers, and symbols, a 16-character password has approximately 95^16 (about 4.76 × 10^31) possible combinations. At 1 billion guesses per second, it would take 15 trillion years to crack.
-              </p>
 
-              <h3>Can a strong password be hacked?</h3>
-              <p>
-                A truly strong, randomly generated password cannot be cracked through guessing. However, accounts can be compromised through phishing, malware, data breaches, or weak security practices. Use strong passwords combined with 2FA and password managers.
-              </p>
-
-              <h3>Is 16 characters enough for a strong password?</h3>
-              <p>
-                16 characters with mixed character types is very strong for most purposes. For maximum security (banking, email, cryptocurrency), 20-32 characters is ideal. SecureGen allows up to 64 characters for ultimate protection.
-              </p>
-
-              <h3>Should I change my strong password regularly?</h3>
-              <p>
-                If your password is truly strong and not compromised, you don't need to change it regularly. However, change passwords immediately after: suspicious account activity, a service breach notification, or if you suspect compromise.
-              </p>
-
-              <h3>Can I make a strong password memorable?</h3>
-              <p>
-                No - memorable passwords are inherently weak because they follow patterns humans can think of. Use SecureGen to create strong passwords and store them in a password manager. This is both stronger and more convenient.
-              </p>
+        <FAQSection 
+          faqs={passwordGeneratorFAQs}
+          heading="Frequently Asked Questions About Strong Passwords"
+        />
             </div>
           </div>
         </section>

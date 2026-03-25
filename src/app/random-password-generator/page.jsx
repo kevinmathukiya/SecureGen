@@ -1,7 +1,17 @@
 import { generateMetadata as genMeta } from '@/lib/seo-metadata';
 import { PasswordGenerator } from '@/components/password/PasswordGenerator';
+import { TrustBadges } from '@/components/ui/TrustBadges';
+import { FAQSection } from '@/components/ui/FAQSection';
 import { Zap, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import {
+  generateSoftwareApplicationSchema,
+  generateFAQSchema,
+  generateHowToSchema,
+  generateBreadcrumbSchema,
+  passwordGeneratorFAQs,
+  passwordGeneratorHowToSteps,
+} from '@/lib/schema-generators';
 
 export const metadata = genMeta({
   title: 'Random Password Generator | Truly Random Authentication Passwords | SecureGen',
@@ -12,20 +22,43 @@ export const metadata = genMeta({
 });
 
 export default function RandomPasswordGenerator() {
-  const schemaData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "SecureGen Random Password Generator",
-    "description": "Generate truly random passwords using cryptographic entropy for maximum security.",
-    "url": "https://passwordgens.online/random-password-generator",
-    "applicationCategory": "UtilityApplication",
-  };
+  const appSchema = generateSoftwareApplicationSchema(
+    'SecureGen Random Password Generator',
+    'Generate truly random passwords using cryptographic entropy for maximum security.',
+    'https://passwordgens.online/random-password-generator'
+  );
+
+  const faqSchema = generateFAQSchema(passwordGeneratorFAQs);
+
+  const howtoSchema = generateHowToSchema(
+    'How to Generate Truly Random Passwords',
+    'Step-by-step guide to generate cryptographically random passwords using SecureGen',
+    passwordGeneratorHowToSteps
+  );
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Password Generators', url: '/password-tools' },
+    { name: 'Random Password Generator', url: '/random-password-generator' }
+  ]);
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(appSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howtoSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <div className="min-h-screen">
         {/* Hero Section */}
@@ -49,6 +82,11 @@ export default function RandomPasswordGenerator() {
 
             <div className="mt-12 max-w-2xl mx-auto">
               <PasswordGenerator />
+            </div>
+
+            {/* Trust Badges */}
+            <div className="mt-16">
+              <TrustBadges variant="compact" />
             </div>
           </div>
         </section>
@@ -100,26 +138,11 @@ export default function RandomPasswordGenerator() {
                 <li><strong>Complexity:</strong> Some systems require specific character types. SecureGen lets you customize as needed.</li>
               </ul>
 
-              <h2>Frequently Asked Questions</h2>
-              <h3>Is SecureGen's randomness truly random?</h3>
-              <p>
-                Yes. SecureGen uses the Web Crypto API's getRandomValues() method, which provides cryptographically secure randomness suitable for password generation.
-              </p>
 
-              <h3>Why not just use a simpler generator?</h3>
-              <p>
-                Simple random generators (like JavaScript Math.random()) are NOT cryptographically secure and shouldn't be used for passwords. SecureGen uses proper cryptographic randomness.
-              </p>
-
-              <h3>Can I predict the next password SecureGen generates?</h3>
-              <p>
-                No. Each password is generated independently using fresh cryptographic entropy. Even if you see 1000 generated passwords, you cannot predict the next one.
-              </p>
-
-              <h3>Is randomness better than me creating my own password?</h3>
-              <p>
-                Absolutely. Humans are bad at randomness - we create patterns unconsciously. SecureGen's cryptographic randomness is mathematically superior to any password you could manually create.
-              </p>
+        <FAQSection 
+          faqs={passwordGeneratorFAQs}
+          heading="Frequently Asked Questions About Random Password Generation"
+        />
             </div>
           </div>
         </section>
