@@ -20,6 +20,20 @@ export const generatePassword = (length, options) => {
     const maxUint32 = 4294967296; // 2^32
     const limit = maxUint32 - (maxUint32 % n);
     
+    // To ensure at least one of each selected type (if length allows)
+    const activeTypes = Object.entries(options).filter(([_, active]) => active);
+    
+    // First, pick one from each active type
+    if (length >= activeTypes.length) {
+      activeTypes.forEach(([type, _]) => {
+        const set = charset[type];
+        const tempBuffer = new Uint32Array(1);
+        window.crypto.getRandomValues(tempBuffer);
+        password += set[tempBuffer[0] % set.length];
+      });
+    }
+
+    // Fill the rest with rejection sampling
     while (password.length < length) {
       // Create a small buffer to reduce calls to getRandomValues
       const buffer = new Uint32Array(Math.max(length, 10));
@@ -32,7 +46,16 @@ export const generatePassword = (length, options) => {
       }
     }
   
-    return password;
+    // Shuffle the result to avoid predictable placement of the guaranteed characters
+    const shuffled = password.split('');
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const buffer = new Uint32Array(1);
+      window.crypto.getRandomValues(buffer);
+      const j = buffer[0] % (i + 1);
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+
+    return shuffled.join('');
   };
   
   export const calculateStrength = (password) => {

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { Copy, RefreshCw, Check, ShieldCheck, Settings2 } from 'lucide-react';
+import { cn } from '../../lib/utils';
 import { Button } from '../ui/button';
 import { Slider } from '../ui/slider';
 import { Switch } from '../ui/switch';
@@ -159,8 +160,22 @@ export const PasswordGenerator = () => {
                 { id: 'numbers', label: 'Numbers (0-9)' },
                 { id: 'symbols', label: 'Symbols (!@#)' },
               ].map((opt) => (
-                <div key={opt.id} className="flex items-center justify-between p-3.5 rounded-xl bg-muted/20 border border-border/30 hover:bg-muted/30 transition-all">
-                  <Label htmlFor={opt.id} className="cursor-pointer text-[11px] font-bold leading-none pr-2">
+                <div 
+                  key={opt.id} 
+                  className={cn(
+                    "flex items-center justify-between p-3.5 rounded-xl border transition-all duration-300",
+                    options[opt.id] 
+                      ? "bg-primary/10 border-primary/30 shadow-sm shadow-primary/5" 
+                      : "bg-muted/10 border-border/20 opacity-60"
+                  )}
+                >
+                  <Label 
+                    htmlFor={opt.id} 
+                    className={cn(
+                      "cursor-pointer text-[11px] font-bold leading-none pr-2 transition-colors",
+                      options[opt.id] ? "text-primary" : "text-muted-foreground"
+                    )}
+                  >
                     {opt.label}
                   </Label>
                   <Switch
