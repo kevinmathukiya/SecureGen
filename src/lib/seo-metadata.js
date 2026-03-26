@@ -14,12 +14,15 @@ const FAVICON_URL = '/favicon.svg';
 export const baseMetadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Free Secure Password Generator - 100% Private | SecureGen',
+    default: 'Ultimate Password Generator | Secure & Random Passwords 2026 | SecureGen',
     template: '%s | SecureGen',
   },
-  description: 'Instantly generate strong, random passwords with SecureGen. 100% client-side security—your passwords never leave your device. Free, fast & secure.',
+  description: 'Generate highly secure, random passwords instantly. Customize length, symbols, and numbers. 100% client-side for maximum privacy and 2026 security standards.',
 keywords: [
   'password generator',
+  'secure password',
+  'random string generator',
+  '2026 password security',
   'secure password generator',
   'random password generator',
   'strong password generator',
@@ -37,8 +40,12 @@ keywords: [
   'password generator free',
   'password generator online',
   'password generator strong',
-  'password generator random',  
-  
+  'password generator random',
+  'secure passphrase generator',
+  'cryptographically secure random password',
+  'password strength tester',
+  'random password generator online',
+  'free password generator 2026',
 ],
   authors: [{ name: SITE_NAME }],
   creator: SITE_NAME,
@@ -163,11 +170,11 @@ export function generateMetadata(pageMetadata = {}) {
 // Pre-configured metadata for common pages
 export const pageMetadata = {
   home: {
-    title: 'Free Secure Password Generator - 100% Private | SecureGen',
-    description: 'Instantly generate strong, random passwords with SecureGen. 100% client-side security—your passwords never leave your device. Free, fast & secure.',
-    keywords: ['password generator', 'strong password generator', 'random password generator', 'free password generator', 'online password generator', 'secure password maker', 'cryptographic password generator', 'password length customizer', 'password strength checker', 'password generator online free'],
+    title: 'Ultimate Password Generator | Secure & Random Passwords 2026 | SecureGen',
+    description: 'Generate highly secure, random passwords instantly. Customize length, symbols, and numbers. 100% client-side for maximum privacy and 2026 security standards.',
+    keywords: ['password generator', 'strong password generator', 'random password generator', 'free password generator 2026', 'online password generator', 'secure password maker', 'cryptographic password generator', 'password length customizer', 'password strength checker', 'password generator online free'],
     url: '/',
-    ogImageAlt: 'SecureGen - Free Secure Password Generator | 4-64 Characters',
+    ogImageAlt: 'SecureGen - Ultimate Secure Password Generator | 2026 Security Standards',
   },
   
   about: {

@@ -66,20 +66,38 @@ export const generateOrganizationSchema = () => {
   };
 };
 
-export const generateSoftwareApplicationSchema = (name, description, url) => {
+export const generateWebSiteSchema = () => {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "SecureGen",
+    "url": "https://passwordgens.online",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://passwordgens.online/?q={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    }
+  };
+};
+
+export const generateSoftwareApplicationSchema = (name, description, url, version = "0.1.0") => {
   return {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": name,
     "description": description,
     "url": url,
-    "applicationCategory": "UtilityApplication",
+    "softwareVersion": version,
+    "applicationCategory": "SecurityApplication",
+    "operatingSystem": "Any",
     "offers": {
       "@type": "Offer",
       "price": "0",
       "priceCurrency": "USD"
     },
-    "operatingSystem": "Any",
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",

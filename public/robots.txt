@@ -1,8 +1,0 @@
-# Block API routes and Next.js internals
-User-agent: *
-Disallow: /api/
-Disallow: /_next/
-Allow: /
-
-# Sitemap location
-Sitemap: https://passwordgens.online/sitemap.xml

@@ -1,9 +1,20 @@
 import { generateMetadata as genMeta, pageMetadata } from '@/lib/seo-metadata';
+import { generateBreadcrumbSchema } from '@/lib/schema-generators';
 
 export const metadata = genMeta(pageMetadata.about);
 
 export default function About() {
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "About", url: "/about" }
+  ]);
+
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
     <div className="container py-16 max-w-3xl">
         <h1 className="font-heading text-4xl font-bold mb-8">About SecureGen: Our Mission for Password Security & Privacy</h1>
         <div className="prose dark:prose-invert">
@@ -57,6 +68,7 @@ export default function About() {
           </div>
         </div>
     </div>
+    </>
   );
 }
 

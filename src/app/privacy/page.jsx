@@ -1,9 +1,20 @@
 import { generateMetadata as genMeta, pageMetadata } from '@/lib/seo-metadata';
+import { generateBreadcrumbSchema } from '@/lib/schema-generators';
 
 export const metadata = genMeta(pageMetadata.privacy);
 
 export default function Privacy() {
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Privacy Policy", url: "/privacy" }
+  ]);
+
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
     <div className="container py-16 max-w-3xl">
         <h1 className="font-heading text-4xl font-bold mb-8">Privacy Policy</h1>
         <div className="prose dark:prose-invert">
@@ -68,6 +79,7 @@ export default function Privacy() {
           </section>
         </div>
     </div>
+    </>
   );
 }
 
