@@ -11,7 +11,7 @@ const generateSlug = (text) => {
         ? text
         : React.Children.toArray(text).map(child =>
             typeof child === 'string' ? child : ''
-          ).join('');
+        ).join('');
 
     return textContent
         .toLowerCase()
@@ -40,54 +40,54 @@ const createHeading = (level, className) => {
 
 // Components object for MDX
 export const mdxComponents = {
-    code: ({children}) => (
+    code: ({ children }) => (
         <code className="text-base bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded font-mono">
             {children}
         </code>
     ),
-    p: ({children}) => (
+    p: ({ children }) => (
         <p className="text-base leading-relaxed">{children}</p>
     ),
     h1: createHeading(1, "text-3xl font-bold mt-8 mb-4"),
     h2: createHeading(2, "text-2xl font-bold mt-6 mb-3"),
     h3: createHeading(3, "text-xl font-bold mt-5 mb-2"),
     h4: createHeading(4, "text-lg font-bold mt-4 mb-2"),
-    ul: ({children}) => (
+    ul: ({ children }) => (
         <ul className="pl-6 list-disc space-y-1">{children}</ul>
     ),
-    ol: ({children}) => (
+    ol: ({ children }) => (
         <ol className="pl-6 list-decimal space-y-1">{children}</ol>
     ),
-    li: ({children}) => (
+    li: ({ children }) => (
         <li className="text-base leading-relaxed">{children}</li>
     ),
-    blockquote: ({children}) => (
+    blockquote: ({ children }) => (
         <blockquote className="border-l-4 border-gray-300 dark:border-gray-600 pl-4 italic mt-4 mb-4 text-gray-700 dark:text-gray-300">
             {children}
         </blockquote>
     ),
-    table: ({children}) => (
+    table: ({ children }) => (
         <div className="overflow-x-auto mt-4">
             <table className="table-auto border-collapse border border-gray-300 dark:border-gray-600 rounded-md w-full">
                 {children}
             </table>
         </div>
     ),
-    th: ({children}) => (
+    th: ({ children }) => (
         <th className="border border-gray-300 dark:border-gray-600 px-3 py-2 bg-gray-100 dark:bg-gray-800 font-semibold text-left">
             {children}
         </th>
     ),
-    td: ({children}) => (
+    td: ({ children }) => (
         <td className="border border-gray-300 dark:border-gray-600 px-3 py-2">{children}</td>
     ),
-    img: ({src, alt}) => 
+    img: ({ src, alt }) =>
         src ? (
             <figure className="my-8 flex flex-col items-center">
                 <Image
                     alt={alt || "Blog image"}
                     src={src}
-                    className="rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 w-full h-auto max-w-full object-cover" 
+                    className="rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 w-full h-auto max-w-full object-cover"
                     loading="lazy"
                     width={800}
                     height={600}
@@ -99,7 +99,7 @@ export const mdxComponents = {
                 )}
             </figure>
         ) : null,
-    a: ({href, children}) => (
+    a: ({ href, children }) => (
         <Link
             href={String(href)}
             className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline"
@@ -108,7 +108,7 @@ export const mdxComponents = {
             {children}
         </Link>
     ),
-    pre: ({children}) => (
+    pre: ({ children }) => (
         <pre className="bg-gray-100 dark:bg-gray-900 p-4 rounded-lg overflow-x-auto !mt-4 !mb-4 text-sm border border-gray-300 dark:border-gray-700">
             {children}
         </pre>

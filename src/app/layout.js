@@ -6,6 +6,7 @@ import { ThemeProvider } from '@/components/providers/theme-provider'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { baseMetadata } from '@/lib/seo-metadata'
+import { siteConfig } from '@/config/site'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -38,14 +39,14 @@ export default function RootLayout({ children }) {
       <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased`}>
         <Script
           strategy="afterInteractive"
-          src="https://www.googletagmanager.com/gtag/js?id=G-7F7M4VXX0P"
+          src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.analytics.google}`}
         />
         <Script id="gtag-init" strategy="afterInteractive">
           {`window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
 
-          gtag('config', 'G-7F7M4VXX0P');`}
+          gtag('config', '${siteConfig.analytics.google}');`}
         </Script>
 
         <Script
@@ -55,10 +56,10 @@ export default function RootLayout({ children }) {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": "SecureGen",
-              "url": "https://passwordgens.online",
-              "logo": "https://passwordgens.online/logo.svg",
-              "description": "Free, secure, and private password generator. Generate strong passwords instantly with customizable options. 100% client-side, no data stored.",
+              "name": siteConfig.name,
+              "url": siteConfig.url,
+              "logo": `${siteConfig.url}${siteConfig.branding.logo}`,
+              "description": siteConfig.description,
               "sameAs": [
                 "https://github.com/kevinmathukiya/SecureGen"
               ],

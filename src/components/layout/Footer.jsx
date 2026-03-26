@@ -13,12 +13,10 @@ export const Footer = () => {
             <Logo />
             <p className="text-sm text-muted-foreground max-w-sm leading-relaxed">
               SecureGen is the ultimate tool for generating cryptographically strong, 100% private passwords.
-              Designed for 2026 security standards, ensuring your digital identity remains uncrackable.
+              Designed for modern security standards, ensuring your digital identity remains uncrackable.
             </p>
             <div className="flex items-center gap-4">
               <a
-                href="https://github.com/kevinmathukiya/SecureGen"
-                target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-background border transition-all hover:border-primary hover:text-primary hover:shadow-sm"
                 aria-label="GitHub"
@@ -41,7 +39,14 @@ export const Footer = () => {
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li><Link href="/blog" className="hover:text-primary transition-colors inline-block py-1">Security Blog</Link></li>
               <li><Link href="/about" className="hover:text-primary transition-colors inline-block py-1">About SecureGen</Link></li>
-              <li><a href="https://github.com/kevinmathukiya/SecureGen/issues" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors inline-block py-1">Report Issue</a></li>
+              <li>
+                <a
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors inline-block py-1"
+                >
+                  Report Issue
+                </a>
+              </li>
             </ul>
           </div>
 

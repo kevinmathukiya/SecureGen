@@ -1,28 +1,25 @@
-/**
- * Common SEO metadata configuration for SecureGen
- * This file provides reusable metadata functions for all pages
- */
+import { siteConfig } from '@/config/site';
 
-const SITE_URL = 'https://passwordgens.online';
-const SITE_NAME = 'SecureGen';
+const SITE_URL = siteConfig.url;
+const SITE_NAME = siteConfig.name;
 const DEFAULT_IMAGE = '/logo.svg';
 const TWITTER_HANDLE = '@securegen';
-const LOGO_URL = '/logo.svg';
-const FAVICON_URL = '/favicon.svg';
+const LOGO_URL = siteConfig.branding.logo;
+const FAVICON_URL = siteConfig.branding.favicon;
 
 // Base metadata shared across all pages
 export const baseMetadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Ultimate Password Generator | Secure & Random Passwords 2026 | SecureGen',
+    default: 'Ultimate Password Generator | Secure & Random Passwords | SecureGen',
     template: '%s | SecureGen',
   },
-  description: 'Generate highly secure, random passwords instantly. Customize length, symbols, and numbers. 100% client-side for maximum privacy and 2026 security standards.',
+  description: 'Generate highly secure, random passwords instantly. Customize length, symbols, and numbers. 100% client-side for maximum privacy and modern security standards.',
 keywords: [
   'password generator',
   'secure password',
   'random string generator',
-  '2026 password security',
+  'modern password security',
   'secure password generator',
   'random password generator',
   'strong password generator',
@@ -45,7 +42,7 @@ keywords: [
   'cryptographically secure random password',
   'password strength tester',
   'random password generator online',
-  'free password generator 2026',
+  'free password generator',
 ],
   authors: [{ name: SITE_NAME }],
   creator: SITE_NAME,
@@ -170,11 +167,11 @@ export function generateMetadata(pageMetadata = {}) {
 // Pre-configured metadata for common pages
 export const pageMetadata = {
   home: {
-    title: 'Ultimate Password Generator | Secure & Random Passwords 2026 | SecureGen',
-    description: 'Generate highly secure, random passwords instantly. Customize length, symbols, and numbers. 100% client-side for maximum privacy and 2026 security standards.',
-    keywords: ['password generator', 'strong password generator', 'random password generator', 'free password generator 2026', 'online password generator', 'secure password maker', 'cryptographic password generator', 'password length customizer', 'password strength checker', 'password generator online free'],
+    title: 'Ultimate Password Generator | Secure & Random Passwords | SecureGen',
+    description: 'Generate highly secure, random passwords instantly. Customize length, symbols, and numbers. 100% client-side for maximum privacy and modern security standards.',
+    keywords: ['password generator', 'strong password generator', 'random password generator', 'free password generator', 'online password generator', 'secure password maker', 'cryptographic password generator', 'password length customizer', 'password strength checker', 'password generator online free'],
     url: '/',
-    ogImageAlt: 'SecureGen - Ultimate Secure Password Generator | 2026 Security Standards',
+    ogImageAlt: 'SecureGen - Ultimate Secure Password Generator | Modern Security Standards',
   },
   
   about: {
@@ -190,7 +187,8 @@ export const pageMetadata = {
     description: 'Expert insights on password security, best practices, and practical guides. Learn password management strategies, multi-factor authentication, phishing prevention, and how to create unbreakable passwords. Updated weekly with actionable security tips.',
     keywords: ['password security blog', 'password tips', 'security tutorials', 'password best practices', 'cybersecurity blog', 'password management guide', 'authentication security', 'phishing prevention', 'password security guide', 'password management tips'],
     url: '/blog',
-    ogImageAlt: 'SecureGen Blog - Password Security Tips & Tutorials',
+    ogImage: 'https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=1200&h=630&fit=crop&crop=center',
+    ogImageAlt: 'SecureGen Password Security Blog - Expert Tips & Guides',
   },
 
   privacy: {

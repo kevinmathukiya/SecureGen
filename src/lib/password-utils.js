@@ -15,12 +15,21 @@ export const generatePassword = (length, options) => {
     // Fallback if nothing selected
     if (chars === "") chars = charset.lowercase;
   
+    const n = chars.length;
     let password = "";
-    const array = new Uint32Array(length);
-    window.crypto.getRandomValues(array);
+    const maxUint32 = 4294967296; // 2^32
+    const limit = maxUint32 - (maxUint32 % n);
     
-    for (let i = 0; i < length; i++) {
-      password += chars[array[i] % chars.length];
+    while (password.length < length) {
+      // Create a small buffer to reduce calls to getRandomValues
+      const buffer = new Uint32Array(Math.max(length, 10));
+      window.crypto.getRandomValues(buffer);
+      
+      for (let i = 0; i < buffer.length && password.length < length; i++) {
+        if (buffer[i] < limit) {
+          password += chars[buffer[i] % n];
+        }
+      }
     }
   
     return password;

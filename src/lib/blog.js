@@ -88,17 +88,21 @@ function parseFrontmatter(frontmatter) {
 
   lines.forEach(line => {
     const trimmedLine = line.trim();
-    if (!trimmedLine) return;
+    if (!trimmedLine || trimmedLine.startsWith('#')) return;
 
     const separatorIndex = trimmedLine.indexOf(':');
     if (separatorIndex === -1) return;
 
     const key = trimmedLine.slice(0, separatorIndex).trim();
-    const value = trimmedLine.slice(separatorIndex + 1).trim();
+    let value = trimmedLine.slice(separatorIndex + 1).trim();
 
-    // Remove quotes if present
-    const cleanValue = value.replace(/^['"]|['"]$/g, '');
-    metadata[key] = cleanValue;
+    // Handle quoted values (single or double quotes)
+    if ((value.startsWith('"') && value.endsWith('"')) || 
+        (value.startsWith("'") && value.endsWith("'"))) {
+      value = value.slice(1, -1);
+    }
+
+    metadata[key] = value;
   });
 
   return metadata;

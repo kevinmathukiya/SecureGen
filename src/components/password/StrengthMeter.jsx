@@ -4,30 +4,36 @@ import { getStrengthLabel, getStrengthColor, getStrengthColorValue } from '@/lib
 
 export const StrengthMeter = ({ score }) => {
   const label = getStrengthLabel(score);
-  const activeColor = getStrengthColor(score);
   const activeColorValue = getStrengthColorValue(score);
 
   return (
-    <div className="w-full space-y-2 sm:space-y-2.5">
-      <div className="flex justify-between items-center text-xs sm:text-sm">
-        <span className="text-muted-foreground font-medium">Strength</span>
-        <span className={cn("font-semibold transition-colors duration-300 text-xs sm:text-sm", 
-          score <= 2 ? "text-red-500" : score <= 3 ? "text-yellow-500" : "text-green-500"
-        )}>
+    <div className="w-full space-y-2" role="progressbar" aria-label="Password Strength" aria-valuenow={score} aria-valuemin="0" aria-valuemax="5">
+      <div className="flex justify-between items-center mb-1">
+        <span className="text-xs font-bold text-muted-foreground">
+          Strength
+        </span>
+        <span 
+          className="text-xs font-bold transition-all duration-300"
+          style={{ color: activeColorValue }}
+        >
           {label}
         </span>
       </div>
-      <div className="flex gap-1 h-1.5 sm:h-2 w-full">
+      
+      <div className="flex gap-1.5 h-2 w-full">
         {[1, 2, 3, 4, 5].map((index) => {
           const isActive = index <= score;
           return (
             <div
               key={index}
               className={cn(
-                "h-full flex-1 rounded-full transition-all duration-500 ease-out",
-                isActive ? activeColor : "bg-muted"
+                "h-full flex-1 rounded-full transition-all duration-500 ease-in-out",
+                !isActive && "bg-muted/30"
               )}
-              style={isActive ? { backgroundColor: activeColorValue } : {}}
+              style={isActive ? { 
+                backgroundColor: activeColorValue,
+                boxShadow: `0 1px 4px ${activeColorValue}20`,
+              } : {}}
             />
           );
         })}
