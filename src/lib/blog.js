@@ -11,16 +11,19 @@ export async function getBlogPosts() {
     }
 
     const files = fs.readdirSync(blogDir).filter(file => file.endsWith('.mdx'));
-    
+
     const posts = files.map(file => {
       const slug = file.replace(/\.mdx$/, '');
       const filePath = path.join(blogDir, file);
       const content = fs.readFileSync(filePath, 'utf8');
-      
+
+      // Normalize line endings
+      const normalizedContent = content.replace(/\r\n/g, '\n');
+
       // Extract frontmatter
-      const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
+      const frontmatterMatch = normalizedContent.match(/^---\n([\s\S]*?)\n---(\n|$)/);
       const frontmatter = frontmatterMatch ? frontmatterMatch[1] : '';
-      
+
       const metadata = {
         slug,
         title: 'Untitled',
@@ -44,15 +47,18 @@ export async function getBlogPosts() {
 export async function getBlogPost(slug) {
   try {
     const filePath = path.join(blogDir, `${slug}.mdx`);
-    
+
     if (!fs.existsSync(filePath)) {
       return null;
     }
 
     const content = fs.readFileSync(filePath, 'utf8');
-    const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
+    // Normalize line endings
+    const normalizedContent = content.replace(/\r\n/g, '\n');
+    
+    const frontmatterMatch = normalizedContent.match(/^---\n([\s\S]*?)\n---(\n|$)/);
     const frontmatter = frontmatterMatch ? frontmatterMatch[1] : '';
-    const body = frontmatterMatch ? content.replace(/^---\n[\s\S]*?\n---\n/, '') : content;
+    const body = frontmatterMatch ? normalizedContent.replace(/^---\n[\s\S]*?\n---(\n|$)/, '') : normalizedContent;
 
     const metadata = {
       slug,
@@ -76,15 +82,23 @@ export async function getBlogPost(slug) {
 // Parse YAML-like frontmatter
 function parseFrontmatter(frontmatter) {
   const metadata = {};
-  const lines = frontmatter.split('\n').filter(line => line.trim());
+  if (!frontmatter) return metadata;
+
+  const lines = frontmatter.split('\n');
 
   lines.forEach(line => {
-    const [key, ...valueParts] = line.split(':');
-    const value = valueParts.join(':').trim();
-    
+    const trimmedLine = line.trim();
+    if (!trimmedLine) return;
+
+    const separatorIndex = trimmedLine.indexOf(':');
+    if (separatorIndex === -1) return;
+
+    const key = trimmedLine.slice(0, separatorIndex).trim();
+    const value = trimmedLine.slice(separatorIndex + 1).trim();
+
     // Remove quotes if present
     const cleanValue = value.replace(/^['"]|['"]$/g, '');
-    metadata[key.trim()] = cleanValue;
+    metadata[key] = cleanValue;
   });
 
   return metadata;

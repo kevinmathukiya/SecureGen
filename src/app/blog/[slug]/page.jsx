@@ -163,6 +163,13 @@ export default async function BlogPostPage({ params }) {
 
           {/* Article header */}
           <div className="mb-10">
+            {metadata.category && (
+              <div className="mb-4">
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300">
+                  {metadata.category}
+                </span>
+              </div>
+            )}
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
               {metadata.title}
             </h1>
@@ -192,11 +199,11 @@ export default async function BlogPostPage({ params }) {
 
           {/* Featured Image */}
           {metadata.image && (
-            <div className="mb-10 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800">
+            <div className="mb-12 rounded-2xl overflow-hidden shadow-xl border border-gray-200 dark:border-gray-800">
               <img
                 src={metadata.image}
                 alt={metadata.title}
-                className="w-full h-96 object-cover"
+                className="w-full h-[400px] object-cover"
               />
             </div>
           )}
@@ -205,6 +212,25 @@ export default async function BlogPostPage({ params }) {
           <div className="prose prose-xl dark:prose-invert max-w-none prose-headings:scroll-mt-20 prose-img:mx-auto prose-img:max-w-full prose-img:h-auto prose-img:rounded-lg">
             <MDXRemote source={content} components={mdxComponents} />
           </div>
+
+          {/* Tags Section */}
+          {metadata.keywords && (
+            <div className="mt-12 pt-8 border-t border-gray-100 dark:border-gray-900">
+              <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4">
+                Tags
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {metadata.keywords.split(',').map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg text-sm hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                  >
+                    #{tag.trim()}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* FAQ Section */}
           <section className="mt-16 pt-12 border-t border-gray-200 dark:border-gray-800">
