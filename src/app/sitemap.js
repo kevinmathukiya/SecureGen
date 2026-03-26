@@ -37,43 +37,7 @@ export default async function sitemap() {
       changeFrequency: 'weekly',
       priority: 0.9,
     },
-    // Platform pages
-    {
-      url: `${baseUrl}/strong-password-generator`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/random-password-generator`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/secure-password-generator`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/free-password-generator`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/password-strength-checker`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/best-password-generator`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
+    // Platform pages (Standard Generator is at /)
   ];
 
   const blogPages = blogPosts.map(post => ({
