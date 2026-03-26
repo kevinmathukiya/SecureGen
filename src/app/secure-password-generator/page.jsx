@@ -5,11 +5,19 @@ import { FAQSection } from '@/components/ui/FAQSection';
 import { Lock, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import {
   generateSoftwareApplicationSchema,
   generateFAQSchema,
   generateHowToSchema,
   generateBreadcrumbSchema,
-  passwordGeneratorFAQs,
+  securePasswordFAQs,
   passwordGeneratorHowToSteps,
 } from '@/lib/schema-generators';
 
@@ -28,7 +36,7 @@ export default function SecurePasswordGenerator() {
     'https://passwordgens.online/secure-password-generator'
   );
 
-  const faqSchema = generateFAQSchema(passwordGeneratorFAQs);
+  const faqSchema = generateFAQSchema(securePasswordFAQs);
 
   const howtoSchema = generateHowToSchema(
     'How to Generate Bank-Grade Secure Passwords',
@@ -65,6 +73,24 @@ export default function SecurePasswordGenerator() {
         <section className="relative py-16 md:py-24 lg:py-32 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-background pointer-events-none" />
           <div className="container relative z-10 px-4 md:px-6">
+            <div className="mb-8">
+              <Breadcrumb>
+                <BreadcrumbList>
+                  <BreadcrumbItem>
+                    <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbSeparator />
+                  <BreadcrumbItem>
+                    <BreadcrumbLink href="/password-tools">Password Tools</BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbSeparator />
+                  <BreadcrumbItem>
+                    <BreadcrumbPage>Secure Password Generator</BreadcrumbPage>
+                  </BreadcrumbItem>
+                </BreadcrumbList>
+              </Breadcrumb>
+            </div>
+
             <div className="flex flex-col items-center text-center space-y-8 max-w-4xl mx-auto">
               <div className="inline-flex items-center rounded-full border px-3 py-1 text-sm font-medium bg-background/50 backdrop-blur-sm text-muted-foreground">
                 <span className="flex h-2 w-2 rounded-full bg-green-500 mr-2"></span>
@@ -97,15 +123,17 @@ export default function SecurePasswordGenerator() {
             <div className="prose prose-lg dark:prose-invert mx-auto">
               <h2>What Makes a Password Secure?</h2>
               <p>
-                Security means protection against all known attack methods. A secure password resists:
+                True security means comprehensive protection against all known attack vectors. A mathematically secure password proactively resists:
               </p>
-              <ul>
-                <li><strong>Brute-force attacks:</strong> Trying every possible combination requires billions of years</li>
-                <li><strong>Dictionary attacks:</strong> No common words or patterns to exploit</li>
-                <li><strong>Rainbow table attacks:</strong> Pre-computed hashes are useless against truly random passwords</li>
-                <li><strong>Phishing:</strong> Only helps if you don't fall for phishing (use 2FA)</li>
-                <li><strong>Credential stuffing:</strong> Unique password per site prevents widespread compromise</li>
-              </ul>
+              
+              <h3>Brute-Force & Dictionary Attacks</h3>
+              <p>By enforcing extreme length and eliminating known dictionary words, SecureGen renders automated guessing algorithms useless. It would take billions of years to guess a bank-grade password.</p>
+              
+              <h3>Rainbow Table & Pre-computation</h3>
+              <p>Using true cryptographic randomness ensures your password's hash has never been pre-calculated or stored in any hacker database ("rainbow table").</p>
+              
+              <h3>Credential Stuffing</h3>
+              <p>Generating a unique, highly secure password for every individual service prevents a breach on one website from compromising your other accounts.</p>
 
               <h2>Bank-Grade Security Standards</h2>
               <p>
@@ -124,14 +152,17 @@ export default function SecurePasswordGenerator() {
 
               <h2>Why Client-Side Generation Is Secure</h2>
               <p>
-                The most secure way to handle passwords is to never send them anywhere. SecureGen generates all passwords in your browser:
+                The fundamental rule of password security is simple: never transmit the password over a network. SecureGen architecture executes 100% within your local browser environment:
               </p>
-              <ul>
-                <li><strong>No transmission:</strong> Password never leaves your device</li>
-                <li><strong>No storage:</strong> Password exists only in your clipboard temporarily</li>
-                <li><strong>No logging:</strong> We don't track or record generated passwords</li>
-                <li><strong>No interception:</strong> No server communication means no interception risk</li>
-              </ul>
+              
+              <h3>Zero Transmission Risk</h3>
+              <p>Because the password never leaves your device, it is completely immune to Man-in-the-Middle (MitM) attacks or server-side interception.</p>
+              
+              <h3>No Storage or Logging</h3>
+              <p>The generated password exists temporarily in your device's memory and clipboard. We maintain no databases, logs, or records of what you generated.</p>
+              
+              <h3>End-to-End Trustless Security</h3>
+              <p>You do not need to inherently "trust" our servers, because our servers never see, handle, or process the passwords you generate.</p>
 
               <h2>Cryptographic Security Principles</h2>
               <p>
@@ -156,7 +187,7 @@ export default function SecurePasswordGenerator() {
 
 
         <FAQSection 
-          faqs={passwordGeneratorFAQs}
+          faqs={securePasswordFAQs}
           heading="Frequently Asked Questions About Secure Password Generation"
         />
             </div>

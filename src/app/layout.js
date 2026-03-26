@@ -7,13 +7,13 @@ import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { baseMetadata } from '@/lib/seo-metadata'
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
   display: 'swap',
 })
 
-const spaceGrotesk = Space_Grotesk({ 
+const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   weight: ['500', '600', '700'],
   variable: '--font-space-grotesk',
@@ -22,9 +22,19 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata = baseMetadata
 
+export const viewport = {
+  themeColor: '#3b82f6',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+}
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+      </head>
       <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased`}>
         <Script
           strategy="afterInteractive"
@@ -37,7 +47,7 @@ export default function RootLayout({ children }) {
 
           gtag('config', 'G-7F7M4VXX0P');`}
         </Script>
-        
+
         <Script
           id="organization-schema"
           type="application/ld+json"

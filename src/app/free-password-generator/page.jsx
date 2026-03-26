@@ -5,11 +5,19 @@ import { FAQSection } from '@/components/ui/FAQSection';
 import { Heart, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import {
   generateSoftwareApplicationSchema,
   generateFAQSchema,
   generateHowToSchema,
   generateBreadcrumbSchema,
-  passwordGeneratorFAQs,
+  freePasswordFAQs,
   passwordGeneratorHowToSteps,
 } from '@/lib/schema-generators';
 
@@ -30,7 +38,7 @@ export default function FreePasswordGenerator() {
   );
 
   // FAQ Schema
-  const faqSchema = generateFAQSchema(passwordGeneratorFAQs);
+  const faqSchema = generateFAQSchema(freePasswordFAQs);
 
   // HowTo Schema
   const howtoSchema = generateHowToSchema(
@@ -69,6 +77,24 @@ export default function FreePasswordGenerator() {
         <section className="relative py-16 md:py-24 lg:py-32 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-background pointer-events-none" />
           <div className="container relative z-10 px-4 md:px-6">
+            <div className="mb-8">
+              <Breadcrumb>
+                <BreadcrumbList>
+                  <BreadcrumbItem>
+                    <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbSeparator />
+                  <BreadcrumbItem>
+                    <BreadcrumbLink href="/password-tools">Password Tools</BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbSeparator />
+                  <BreadcrumbItem>
+                    <BreadcrumbPage>Free Password Generator</BreadcrumbPage>
+                  </BreadcrumbItem>
+                </BreadcrumbList>
+              </Breadcrumb>
+            </div>
+
             <div className="flex flex-col items-center text-center space-y-8 max-w-4xl mx-auto">
               <div className="inline-flex items-center rounded-full border px-3 py-1 text-sm font-medium bg-background/50 backdrop-blur-sm text-muted-foreground">
                 <span className="flex h-2 w-2 rounded-full bg-green-500 mr-2"></span>
@@ -100,15 +126,15 @@ export default function FreePasswordGenerator() {
           <div className="container px-4 md:px-6 max-w-4xl">
             <div className="prose prose-lg dark:prose-invert mx-auto">
               <h2>Why Choose SecureGen's Free Password Generator?</h2>
-              <ul>
-                <li><strong>Completely Free:</strong> No premium limits, no paid upgrades, no trial restrictions</li>
-                <li><strong>No Registration:</strong> Use instantly without creating an account</li>
-                <li><strong>No Installation:</strong> Works directly in your web browser</li>
-                <li><strong>No Login:</strong> No username, password, or email verification needed</li>
-                <li><strong>Unlimited Passwords:</strong> Generate as many passwords as you need</li>
-                <li><strong>Fully Private:</strong> 100% client-side - passwords never sent to servers</li>
-                <li><strong>Open Source:</strong> Source code available on GitHub for transparency</li>
-              </ul>
+              
+              <h3>Completely Free with No Restrictions</h3>
+              <p>SecureGen imposes no premium limits, paid upgrades, or trial periods. You can generate unlimited passwords at any length without hitting a paywall.</p>
+              
+              <h3>No Registration or Login Required</h3>
+              <p>Start using the tool instantly without creating an account, verifying an email address, or remembering yet another login credential.</p>
+              
+              <h3>Fully Private &amp; Open Source</h3>
+              <p>100% of the generation happens client-side inside your browser. Your data is never sent to our servers, and our open-source code is publicly auditable on GitHub.</p>
 
               <h2>How to Use SecureGen (It's Simple!)</h2>
               <ol>
@@ -120,15 +146,16 @@ export default function FreePasswordGenerator() {
               </ol>
 
               <h2>Free Features You Get</h2>
-              <ul>
-                <li><strong>Customizable length:</strong> 4-64 characters</li>
-                <li><strong>Character type selection:</strong> uppercase, lowercase, numbers, symbols</li>
-                <li><strong>Instant generation:</strong> passwords created instantly</li>
-                <li><strong>One-click copy:</strong> password copied to clipboard automatically</li>
-                <li><strong>Strength meter:</strong> visual indicator of password strength</li>
-                <li><strong>Dark mode:</strong> supporting eye-friendly theme</li>
-                <li><strong>Mobile friendly:</strong> works on phones, tablets, and computers</li>
-              </ul>
+              <p>Even though SecureGen is 100% free, it includes premium-grade features securely built-in:</p>
+              
+              <h3>Customizable Length and Entropy</h3>
+              <p>Generate passwords from 4 to 64 characters long, toggling uppercase, lowercase, numbers, and symbols to meet any website's complexity requirements.</p>
+              
+              <h3>Instant Generation &amp; Copying</h3>
+              <p>Passwords are created instantly with a visual strength meter, and they can be copied to your clipboard with a single click.</p>
+              
+              <h3>Cross-Device Compatibility</h3>
+              <p>Works flawlessly across mobile phones, tablets, and desktop computers—including a dark mode theme for eye comfort.</p>
 
               <h2>Why Free Tools Are Worth It</h2>
               <p>
@@ -155,7 +182,7 @@ export default function FreePasswordGenerator() {
 
 
         <FAQSection 
-          faqs={passwordGeneratorFAQs}
+          faqs={freePasswordFAQs}
           heading="Frequently Asked Questions About Our Free Password Generator"
         />
             </div>

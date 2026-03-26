@@ -84,13 +84,13 @@ export const mdxComponents = {
     img: ({src, alt}) => 
         src ? (
             <figure className="my-8 flex flex-col items-center">
-                <img
+                <Image
                     alt={alt || "Blog image"}
                     src={src}
                     className="rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 w-full h-auto max-w-full object-cover" 
                     loading="lazy"
-                    width="800"
-                    height="600"
+                    width={800}
+                    height={600}
                 />
                 {alt && (
                     <figcaption className="mt-3 text-sm text-gray-600 dark:text-gray-400 text-center italic">

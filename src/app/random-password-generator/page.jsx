@@ -5,17 +5,25 @@ import { FAQSection } from '@/components/ui/FAQSection';
 import { Zap, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import {
   generateSoftwareApplicationSchema,
   generateFAQSchema,
   generateHowToSchema,
   generateBreadcrumbSchema,
-  passwordGeneratorFAQs,
+  randomPasswordFAQs,
   passwordGeneratorHowToSteps,
 } from '@/lib/schema-generators';
 
 export const metadata = genMeta({
-  title: 'Random Password Generator | Truly Random Authentication Passwords | SecureGen',
-  description: 'Generate truly random passwords using cryptographic randomness. SecureGen creates unpredictable, random authentication passwords with no patterns. Perfect for strong account security.',
+  title: 'Random Password Generator - Create Secure Passwords | SecureGen',
+  description: 'Need a random password? Use our free generator to create cryptographically strong passwords in seconds. No data stored, total privacy guaranteed.',
   keywords: ['random password generator', 'random password maker', 'generate random password', 'truly random password', 'secure random password', 'cryptographically random password', 'random password creator'],
   url: '/random-password-generator',
   ogImageAlt: 'Random Password Generator - Truly Random Authentication Passwords',
@@ -28,7 +36,7 @@ export default function RandomPasswordGenerator() {
     'https://passwordgens.online/random-password-generator'
   );
 
-  const faqSchema = generateFAQSchema(passwordGeneratorFAQs);
+  const faqSchema = generateFAQSchema(randomPasswordFAQs);
 
   const howtoSchema = generateHowToSchema(
     'How to Generate Truly Random Passwords',
@@ -65,6 +73,24 @@ export default function RandomPasswordGenerator() {
         <section className="relative py-16 md:py-24 lg:py-32 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-background pointer-events-none" />
           <div className="container relative z-10 px-4 md:px-6">
+            <div className="mb-8">
+              <Breadcrumb>
+                <BreadcrumbList>
+                  <BreadcrumbItem>
+                    <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbSeparator />
+                  <BreadcrumbItem>
+                    <BreadcrumbLink href="/password-tools">Password Tools</BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbSeparator />
+                  <BreadcrumbItem>
+                    <BreadcrumbPage>Random Password Generator</BreadcrumbPage>
+                  </BreadcrumbItem>
+                </BreadcrumbList>
+              </Breadcrumb>
+            </div>
+
             <div className="flex flex-col items-center text-center space-y-8 max-w-4xl mx-auto">
               <div className="inline-flex items-center rounded-full border px-3 py-1 text-sm font-medium bg-background/50 backdrop-blur-sm text-muted-foreground">
                 <span className="flex h-2 w-2 rounded-full bg-green-500 mr-2"></span>
@@ -102,14 +128,17 @@ export default function RandomPasswordGenerator() {
 
               <h2>Pseudo-Random vs Cryptographically Random</h2>
               <p>
-                Not all random generators are equal. There are two types:
+                Not all random generators are equal. There are two main types of random generation used in software today:
               </p>
-              <ul>
-                <li><strong>Pseudo-random:</strong> Uses algorithms that appear random but are actually predictable if you know the seed. NOT suitable for passwords.</li>
-                <li><strong>Cryptographically random:</strong> Uses entropy sources like system noise to create unpredictable values. IDEAL for passwords.</li>
-              </ul>
+              
+              <h3>Pseudo-Random Number Generators (PRNG)</h3>
+              <p>These algorithms appear random but are mathematically predictable if an attacker discovers the initial "seed" value. They are generally <strong>NOT suitable</strong> for securing sensitive accounts.</p>
+              
+              <h3>Cryptographically Secure Randomness (CSPRNG)</h3>
+              <p>This method utilizes high-quality entropy sources from the operating system (like system noise or hardware interrupts) to create values that are completely unpredictable. This is the <strong>ideal standard</strong> for generating passwords.</p>
+              
               <p>
-                SecureGen uses cryptographically random generation, making it suitable for high-security applications.
+                SecureGen strictly utilizes cryptographically secure methodologies (specifically the Web Crypto API), ensuring your generated passwords remain resilient against modern threats.
               </p>
 
               <h2>How Randomness Prevents Password Attacks</h2>
@@ -130,18 +159,22 @@ export default function RandomPasswordGenerator() {
 
               <h2>Customizing Your Random Password</h2>
               <p>
-                While randomness is key, you should customize:
+                While absolute randomness forms the foundation of a secure password, it must also align with the specific security policies of the website you are registering on. Use SecureGen's controls to customize your output:
               </p>
-              <ul>
-                <li><strong>Length:</strong> Longer passwords are more secure. Use 16+ characters minimum.</li>
-                <li><strong>Character types:</strong> Include uppercase, lowercase, numbers, and symbols for maximum entropy.</li>
-                <li><strong>Complexity:</strong> Some systems require specific character types. SecureGen lets you customize as needed.</li>
-              </ul>
+              
+              <h3>Adjusting Length for Security</h3>
+              <p>Longer passwords mathematically increase security exponentially. Always aim for a minimum of 16 characters for standard accounts, and 20+ for sensitive financial accounts.</p>
+              
+              <h3>Expanding Character Diversity</h3>
+              <p>Toggle uppercase, lowercase, numbers, and symbols to maximize the "password space" (entropy) an attacker would need to guess.</p>
+              
+              <h3>Meeting Complexity Requirements</h3>
+              <p>Many legacy systems mandate specific character combinations or restrict certain symbols. Instantly adapt your generated password to meet these exact compliance rules without sacrificing randomness.</p>
 
 
         <FAQSection 
-          faqs={passwordGeneratorFAQs}
-          heading="Frequently Asked Questions About Random Password Generation"
+          faqs={randomPasswordFAQs}
+          heading="Frequently Asked Questions About Random Passwords"
         />
             </div>
           </div>

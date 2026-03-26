@@ -2,10 +2,18 @@ import { generateMetadata as genMeta } from '@/lib/seo-metadata';
 import { PasswordGenerator } from '@/components/password/PasswordGenerator';
 import { ShieldCheck, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 export const metadata = genMeta({
-  title: 'Password Strength Checker | Analyze Your Password Security | SecureGen',
-  description: 'Check your password strength instantly with SecureGen\'s password analyzer. Learn how secure your passwords are and get tips to improve them. 100% private client-side analysis.',
+  title: 'Password Strength Checker - Test Your Security | SecureGen',
+  description: 'How strong is your password? Check your password strength instantly and get tips to improve it. 100% private analysis.',
   keywords: ['password strength checker', 'password analyzer', 'password strength test', 'check password strength', 'password security analyzer', 'strong password checker', 'password strength meter'],
   url: '/password-strength-checker',
   ogImageAlt: 'Password Strength Checker - Analyze Your Password Security',
@@ -32,6 +40,24 @@ export default function PasswordStrengthChecker() {
         <section className="relative py-16 md:py-24 lg:py-32 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-background pointer-events-none" />
           <div className="container relative z-10 px-4 md:px-6">
+            <div className="mb-8">
+              <Breadcrumb>
+                <BreadcrumbList>
+                  <BreadcrumbItem>
+                    <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbSeparator />
+                  <BreadcrumbItem>
+                    <BreadcrumbLink href="/password-tools">Password Tools</BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbSeparator />
+                  <BreadcrumbItem>
+                    <BreadcrumbPage>Password Strength Checker</BreadcrumbPage>
+                  </BreadcrumbItem>
+                </BreadcrumbList>
+              </Breadcrumb>
+            </div>
+
             <div className="flex flex-col items-center text-center space-y-8 max-w-4xl mx-auto">
               <div className="inline-flex items-center rounded-full border px-3 py-1 text-sm font-medium bg-background/50 backdrop-blur-sm text-muted-foreground">
                 <span className="flex h-2 w-2 rounded-full bg-green-500 mr-2"></span>

@@ -5,17 +5,25 @@ import { FAQSection } from '@/components/ui/FAQSection';
 import { Shield, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import {
   generateSoftwareApplicationSchema,
   generateFAQSchema,
   generateHowToSchema,
   generateBreadcrumbSchema,
-  passwordGeneratorFAQs,
+  strongPasswordFAQs,
   passwordGeneratorHowToSteps,
 } from '@/lib/schema-generators';
 
 export const metadata = genMeta({
-  title: 'Strong Password Generator | Create Unbreakable Passwords | SecureGen',
-  description: 'Generate truly strong passwords with SecureGen. Create unbreakable passwords with maximum entropy, mixed character sets, and cryptographic security. 16+ character passwords for maximum protection.',
+  title: 'Strong Password Generator - Brute-Force Proof | SecureGen',
+  description: 'Generate unbreakable 16+ character passwords. SecureGen uses advanced entropy to protect your accounts from hacking. Free and private.',
   keywords: ['strong password generator', 'strong password maker', 'create strong password', 'unbreakable password', 'high entropy password', 'cryptographic password generator', 'secure strong password', 'powerful password tool'],
   url: '/strong-password-generator',
   ogImageAlt: 'Strong Password Generator - Create Unbreakable Passwords',
@@ -28,7 +36,7 @@ export default function StrongPasswordGenerator() {
     'https://passwordgens.online/strong-password-generator'
   );
 
-  const faqSchema = generateFAQSchema(passwordGeneratorFAQs);
+  const faqSchema = generateFAQSchema(strongPasswordFAQs);
 
   const howtoSchema = generateHowToSchema(
     'How to Generate a Strong Password Online',
@@ -64,6 +72,24 @@ export default function StrongPasswordGenerator() {
         <section className="relative py-16 md:py-24 lg:py-32 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-background pointer-events-none" />
           <div className="container relative z-10 px-4 md:px-6">
+            <div className="mb-8">
+              <Breadcrumb>
+                <BreadcrumbList>
+                  <BreadcrumbItem>
+                    <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbSeparator />
+                  <BreadcrumbItem>
+                    <BreadcrumbLink href="/password-tools">Password Tools</BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbSeparator />
+                  <BreadcrumbItem>
+                    <BreadcrumbPage>Strong Password Generator</BreadcrumbPage>
+                  </BreadcrumbItem>
+                </BreadcrumbList>
+              </Breadcrumb>
+            </div>
+
             <div className="flex flex-col items-center text-center space-y-8 max-w-4xl mx-auto">
               <div className="inline-flex items-center rounded-full border px-3 py-1 text-sm font-medium bg-background/50 backdrop-blur-sm text-muted-foreground">
                 <span className="flex h-2 w-2 rounded-full bg-green-500 mr-2"></span>
@@ -94,18 +120,18 @@ export default function StrongPasswordGenerator() {
         <section className="py-16 md:py-24">
           <div className="container px-4 md:px-6 max-w-4xl">
             <div className="prose prose-lg dark:prose-invert mx-auto">
-              <h2>What Is a Strong Password?</h2>
+              <h2>What Makes a Password &quot;Strong&quot;?</h2>
               <p>
                 A strong password is practically impossible for attackers to guess or crack. It combines length, randomness, and character diversity to maximize security. Strong passwords contain:
               </p>
-              <ul>
-                <li><strong>Minimum 16 characters</strong> - longer passwords exponentially increase crack time</li>
-                <li><strong>Uppercase letters (A-Z)</strong> - adds diversity to character set</li>
-                <li><strong>Lowercase letters (a-z)</strong> - further increases possible combinations</li>
-                <li><strong>Numbers (0-9)</strong> - adds numeric entropy to the mix</li>
-                <li><strong>Special symbols (!@#$%)</strong> - maximum character variety</li>
-                <li><strong>Complete randomness</strong> - no patterns, dictionary words, or personal info</li>
-              </ul>
+              <h3>Length (16+ Characters)</h3>
+              <p>Longer passwords exponentially increase crack time. A 16-character password would take millions of years to brute-force.</p>
+              
+              <h3>Character Diversity</h3>
+              <p>Combining uppercase letters (A-Z), lowercase letters (a-z), numbers (0-9), and special symbols (!@#$%) adds maximum character variety to your password.</p>
+              
+              <h3>Randomness &amp; Entropy</h3>
+              <p>Complete randomness means no predictable patterns, dictionary words, or personal information can be guessed by attackers.</p>
 
               <h2>Why Strong Passwords Matter for Security</h2>
               <p>
@@ -122,17 +148,16 @@ export default function StrongPasswordGenerator() {
                 <li><strong>Social engineering</strong> - passwords can't be guessed if truly random</li>
               </ul>
 
-              <h2>How SecureGen Creates Unbreakable Passwords</h2>
+              <h2>How SecureGen Protects Your Data</h2>
               <p>
-                SecureGen uses cryptographic randomness from your browser's secure APIs to generate passwords that are mathematically impossible to predict:
+                SecureGen uses cryptographic randomness from your browser's secure APIs to generate passwords that are mathematically impossible to predict. We prioritize your security above all else:
               </p>
-              <ul>
-                <li><strong>Cryptographic entropy:</strong> Uses Web Crypto API for true randomness, not pseudo-random generation</li>
-                <li><strong>Client-side generation:</strong> Your passwords are never sent to servers, ensuring zero data exposure</li>
-                <li><strong>Customizable length:</strong> Choose 4-64 characters depending on security needs</li>
-                <li><strong>Mixed character sets:</strong> Combine uppercase, lowercase, numbers, and symbols for maximum entropy</li>
-                <li><strong>Instant availability:</strong> Generate unlimited strong passwords instantly</li>
-              </ul>
+              
+              <h3>100% Client-Side Generation</h3>
+              <p>Your passwords are never sent to servers, ensuring zero data exposure. Everything happens directly in your browser.</p>
+              
+              <h3>Cryptographic Web APIs</h3>
+              <p>We use the Web Crypto API for true cryptographic entropy, guaranteeing unpredictability and protection against brute-force attacks.</p>
 
               <h2>Strong Password Length Requirements by Account Type</h2>
               <p>
@@ -161,7 +186,7 @@ export default function StrongPasswordGenerator() {
 
 
         <FAQSection 
-          faqs={passwordGeneratorFAQs}
+          faqs={strongPasswordFAQs}
           heading="Frequently Asked Questions About Strong Passwords"
         />
             </div>

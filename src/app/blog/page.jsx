@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { getBlogPosts } from '@/lib/blog';
 import { generateMetadata as genMeta, pageMetadata } from '@/lib/seo-metadata';
+import Image from 'next/image';
 
 export const metadata = genMeta(pageMetadata.blog);
 
@@ -109,10 +110,11 @@ export default async function BlogPage() {
                 >
                   {post.image && (
                     <div className="relative h-48 w-full overflow-hidden bg-gradient-to-br from-blue-500/10 to-purple-500/10">
-                      <img
+                      <Image
                         src={post.image}
                         alt={post.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
                   )}

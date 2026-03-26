@@ -14,10 +14,10 @@ const FAVICON_URL = '/favicon.svg';
 export const baseMetadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Secure Password Generator (4–64 Characters) – Free & Private | SecureGen',
+    default: 'Free Secure Password Generator - 100% Private | SecureGen',
     template: '%s | SecureGen',
   },
-  description: 'Generate strong and secure passwords instantly. Choose length from 4–64 characters with letters, numbers, and symbols. 100% free and runs entirely in your browser.',
+  description: 'Instantly generate strong, random passwords with SecureGen. 100% client-side security—your passwords never leave your device. Free, fast & secure.',
 keywords: [
   'password generator',
   'secure password generator',
@@ -163,8 +163,8 @@ export function generateMetadata(pageMetadata = {}) {
 // Pre-configured metadata for common pages
 export const pageMetadata = {
   home: {
-    title: 'Free Secure Password Generator (4–64 Characters) | Client-Side & Private | SecureGen',
-    description: 'Generate strong, random passwords instantly with SecureGen. Free password generator with customizable length, uppercase, lowercase, numbers, and symbols. 100% client-side—no data collected, no server storage. Instant strength meter included.',
+    title: 'Free Secure Password Generator - 100% Private | SecureGen',
+    description: 'Instantly generate strong, random passwords with SecureGen. 100% client-side security—your passwords never leave your device. Free, fast & secure.',
     keywords: ['password generator', 'strong password generator', 'random password generator', 'free password generator', 'online password generator', 'secure password maker', 'cryptographic password generator', 'password length customizer', 'password strength checker', 'password generator online free'],
     url: '/',
     ogImageAlt: 'SecureGen - Free Secure Password Generator | 4-64 Characters',
@@ -208,6 +208,14 @@ export const pageMetadata = {
       index: true,
       follow: true,
     },
+  },
+  
+  cookies: {
+    title: 'Cookie Policy | SecureGen - How We Use Cookies',
+    description: 'Learn about how SecureGen uses cookies and local storage to provide a better, more secure experience. Transparent disclosure of analytics and preference tracking.',
+    keywords: ['cookie policy', 'securegen cookies', 'local storage usage', 'analytics cookies', 'privacy settings', 'browser storage', 'cookie disclosure'],
+    url: '/cookies',
+    ogImageAlt: 'SecureGen Cookie Policy',
   },
 };
 

@@ -15,11 +15,23 @@ export const Footer = () => {
           </div>
           
           <div>
-            <h3 className="font-heading font-semibold mb-4">Product</h3>
+            <h3 className="font-heading font-semibold mb-4">Password Tools</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><Link href="/" className="hover:text-primary transition-colors">Password Generator</Link></li>
-              <li><Link href="/about" className="hover:text-primary transition-colors">About Us</Link></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Source Code</a></li>
+              <li><Link href="/" className="hover:text-primary transition-colors">Standard Generator</Link></li>
+              <li><Link href="/strong-password-generator" className="hover:text-primary transition-colors">Strong Generator</Link></li>
+              <li><Link href="/random-password-generator" className="hover:text-primary transition-colors">Random Generator</Link></li>
+              <li><Link href="/secure-password-generator" className="hover:text-primary transition-colors">Secure Generator</Link></li>
+              <li><Link href="/free-password-generator" className="hover:text-primary transition-colors">Free Generator</Link></li>
+              <li><Link href="/password-strength-checker" className="hover:text-primary transition-colors">Strength Checker</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-heading font-semibold mb-4">Resources</h3>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li><Link href="/blog" className="hover:text-primary transition-colors">Security Blog</Link></li>
+              <li><Link href="/about" className="hover:text-primary transition-colors">About SecureGen</Link></li>
+              <li><a href="https://github.com/kevinmathukiya/SecureGen" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Source Code</a></li>
             </ul>
           </div>
 

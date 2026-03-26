@@ -3,6 +3,7 @@ import { Shield, Lock, Zap, CheckCircle2, ArrowRight } from 'lucide-react';
 import { generateMetadata as genMeta, pageMetadata } from '@/lib/seo-metadata';
 import { getBlogPosts } from '@/lib/blog';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export const metadata = genMeta(pageMetadata.home);
 
@@ -317,10 +318,11 @@ export default async function Home() {
                   >
                     {post.image && (
                       <div className="relative h-48 bg-gradient-to-br from-blue-500/10 to-purple-500/10 overflow-hidden">
-                        <img
+                        <Image
                           src={post.image}
                           alt={post.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                       </div>
                     )}

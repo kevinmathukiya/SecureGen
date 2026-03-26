@@ -5,11 +5,19 @@ import { FAQSection } from '@/components/ui/FAQSection';
 import { Zap, ArrowRight, CheckCircle2, AlertCircle } from 'lucide-react';
 import Link from 'next/link';
 import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import {
   generateSoftwareApplicationSchema,
   generateFAQSchema,
   generateHowToSchema,
   generateBreadcrumbSchema,
-  passwordGeneratorFAQs,
+  bestPasswordFAQs,
   passwordGeneratorHowToSteps,
 } from '@/lib/schema-generators';
 
@@ -28,7 +36,7 @@ export default function BestPasswordGenerator() {
     'https://passwordgens.online/best-password-generator'
   );
 
-  const faqSchema = generateFAQSchema(passwordGeneratorFAQs);
+  const faqSchema = generateFAQSchema(bestPasswordFAQs);
 
   const howtoSchema = generateHowToSchema(
     'Why SecureGen is the Best Password Generator',
@@ -65,6 +73,24 @@ export default function BestPasswordGenerator() {
         <section className="relative py-16 md:py-24 lg:py-32 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-background pointer-events-none" />
           <div className="container relative z-10 px-4 md:px-6">
+            <div className="mb-8">
+              <Breadcrumb>
+                <BreadcrumbList>
+                  <BreadcrumbItem>
+                    <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbSeparator />
+                  <BreadcrumbItem>
+                    <BreadcrumbLink href="/password-tools">Password Tools</BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbSeparator />
+                  <BreadcrumbItem>
+                    <BreadcrumbPage>Best Password Generator</BreadcrumbPage>
+                  </BreadcrumbItem>
+                </BreadcrumbList>
+              </Breadcrumb>
+            </div>
+
             <div className="flex flex-col items-center text-center space-y-8 max-w-4xl mx-auto">
               <div className="inline-flex items-center rounded-full border px-3 py-1 text-sm font-medium bg-background/50 backdrop-blur-sm text-muted-foreground">
                 <span className="flex h-2 w-2 rounded-full bg-green-500 mr-2"></span>
@@ -96,16 +122,18 @@ export default function BestPasswordGenerator() {
           <div className="container px-4 md:px-6 max-w-4xl">
             <div className="prose prose-lg dark:prose-invert mx-auto">
               <h2>What Makes the Best Password Generator?</h2>
-              <p>
-                A truly great password generator should be:
-              </p>
-              <ul>
-                <li><strong>Secure:</strong> Using cryptographic randomness suitable for security</li>
-                <li><strong>Private:</strong> Client-side only, no server transmission of passwords</li>
-                <li><strong>Transparent:</strong> Open-source code available for inspection</li>
-                <li><strong>Simple:</strong> Easy to use without complex configuration</li>
-                <li><strong>Free:</strong> No hidden costs or premium restrictions</li>
-              </ul>
+              
+              <h3>Cryptographically Secure</h3>
+              <p>The best password generators use advanced cryptographic randomness (like the Web Crypto API) to ensure passwords are mathematically impossible to predict or brute-force.</p>
+              
+              <h3>100% Private &amp; Client-Side</h3>
+              <p>Your passwords should never be transmitted over a network. The highest standard for privacy requires all generation to happen locally on your physical device.</p>
+              
+              <h3>Transparent &amp; Open Source</h3>
+              <p>Security requires scrutiny. The best tools publish their source code for independent researchers to verify there are no backdoors or hidden tracking scripts.</p>
+              
+              <h3>Completely Free to Use</h3>
+              <p>Basic digital security is a fundamental right. Top-tier password generators provide full access to maximum password lengths and character sets at no cost.</p>
 
               <h2>Why SecureGen Is the Best Choice</h2>
               <div className="bg-green-50 dark:bg-green-950/20 border border-green-200 dark:border-green-900 rounded-lg p-6 my-6">
@@ -229,30 +257,10 @@ export default function BestPasswordGenerator() {
               </p>
 
               <h2>Frequently Asked Questions</h2>
-              <h3>Is SecureGen better than password managers?</h3>
-              <p>
-                SecureGen and password managers serve different purposes: SecureGen generates passwords, password managers store them. Use both together for complete security.
-              </p>
-
-              <h3>Can I trust SecureGen?</h3>
-              <p>
-                SecureGen uses standard Web Crypto APIs, is open-source (auditable), doesn't transmit data, and has no tracking. The code is available on GitHub for independent verification.
-              </p>
-
-              <h3>Why is SecureGen better than enterprise password generators?</h3>
-              <p>
-                Enterprise tools are optimized for organizational needs. SecureGen is optimized for individual privacy and security. No compromise on either front.
-              </p>
-
-              <h3>What if I need a password generator on my phone?</h3>
-              <p>
-                SecureGen works on all devices with web browsers—phones, tablets, computers. Mobile-optimized and works offline too.
-              </p>
-
-              <h3>Is it really free with no catches?</h3>
-              <p>
-                Yes, completely free with no catches, no ads, no tracking, no premium version. Open-source and community-supported.
-              </p>
+              <FAQSection 
+                faqs={bestPasswordFAQs}
+                heading=""
+              />
             </div>
           </div>
         </section>
