@@ -63,7 +63,7 @@ const nextConfig = {
           },
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.unsplash.com https://images.unsplash.com https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com; frame-src 'none'; object-src 'none';",
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://*.clarity.ms https://c.bing.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.unsplash.com https://images.unsplash.com https://www.google-analytics.com https://*.clarity.ms https://c.bing.com; connect-src 'self' https://www.google-analytics.com https://*.clarity.ms https://c.bing.com; frame-src 'none'; object-src 'none';",
           },
         ],
       },

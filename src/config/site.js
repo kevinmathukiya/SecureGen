@@ -8,6 +8,7 @@ export const siteConfig = {
   },
   analytics: {
     google: "G-7F7M4VXX0P",
+    clarity: "w26b71budh",
   },
   branding: {
     logo: "/logo.svg",
