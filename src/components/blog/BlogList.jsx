@@ -4,7 +4,7 @@ import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-const CATEGORIES = ["All", "Security", "Privacy", "Tutorials", "Guides"];
+const CATEGORIES = ["All", "Latest News", "Security", "Privacy", "Tutorials", "Guides"];
 
 export default function BlogList({ posts }) {
   const [searchQuery, setSearchQuery] = useState('');
