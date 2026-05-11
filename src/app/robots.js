@@ -3,8 +3,8 @@ export default function robots() {
     rules: [
       {
         userAgent: '*',
-        allow: '/',
-        disallow: ['/api/', '/_next/'],
+        allow: ['/', '/_next/static/', '/_next/image/'],
+        disallow: ['/api/'],
       },
     ],
     sitemap: 'https://passwordgens.online/sitemap.xml',
