@@ -2,8 +2,10 @@ import Link from 'next/link';
 import { getBlogPosts } from '@/lib/blog';
 import { generateMetadata as genMeta, pageMetadata } from '@/lib/seo-metadata';
 import BlogList from '@/components/blog/BlogList';
+import { siteConfig } from '@/config/site';
 
 export const metadata = genMeta(pageMetadata.blog);
+
 
 export default async function BlogPage() {
   let posts = [];
@@ -15,17 +17,19 @@ export default async function BlogPage() {
     error = err instanceof Error ? err.message : 'Failed to load blog posts';
   }
 
+  const SITE_URL = siteConfig.url;
+
   // Structured data
   const blogSchema = {
     "@context": "https://schema.org",
     "@type": "Blog",
-    "name": "SecureGen Password Security Blog",
+    "name": `${siteConfig.name} Password Security Blog`,
     "description": "Tips, tutorials, and insights about password security and generation.",
-    "url": "https://passwordgens.online/blog",
+    "url": `${SITE_URL}/blog`,
     "publisher": {
       "@type": "Organization",
-      "name": "SecureGen",
-      "logo": { "@type": "ImageObject", "url": "https://passwordgens.online/logo.svg" }
+      "name": siteConfig.name,
+      "logo": { "@type": "ImageObject", "url": `${SITE_URL}${siteConfig.branding.logo}` }
     },
     "blogPost": posts.map(post => ({
       "@type": "BlogPosting",
@@ -33,9 +37,9 @@ export default async function BlogPage() {
       "description": post.description,
       "author": { "@type": "Person", "name": post.author },
       "datePublished": post.date,
-      "url": `https://passwordgens.online/blog/${post.slug}`,
+      "url": `${SITE_URL}/blog/${post.slug}`,
       "image": post.image,
-      "publisher": { "@type": "Organization", "name": "SecureGen" }
+      "publisher": { "@type": "Organization", "name": siteConfig.name }
     }))
   };
 
@@ -43,8 +47,8 @@ export default async function BlogPage() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://passwordgens.online" },
-      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://passwordgens.online/blog" }
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${SITE_URL}/blog` }
     ]
   };
 
@@ -52,6 +56,7 @@ export default async function BlogPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+
 
       <div className="min-h-screen bg-background">
 

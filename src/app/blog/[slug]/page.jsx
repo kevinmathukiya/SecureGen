@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { mdxComponents } from '@/lib/mdx-components';
 import Image from 'next/image';
 import Link from 'next/link';
+import { siteConfig } from '@/config/site';
 
 export async function generateStaticParams() {
   const posts = await getBlogPosts();
@@ -58,6 +59,7 @@ export default async function BlogPostPage({ params }) {
   }
 
   const { metadata, content } = blogPost;
+  const SITE_URL = siteConfig.url;
 
   // Extract headings for TOC
   const headings = Array.from(content.matchAll(/(#{2,3})\s+(.*)/g)).map(match => ({
@@ -83,16 +85,16 @@ export default async function BlogPostPage({ params }) {
     "author": { "@type": "Person", "name": metadata.author },
     "publisher": {
       "@type": "Organization",
-      "name": "SecureGen",
-      "logo": { "@type": "ImageObject", "url": "https://passwordgens.online/logo.svg" }
+      "name": siteConfig.name,
+      "logo": { "@type": "ImageObject", "url": `${SITE_URL}${siteConfig.branding.logo}` }
     },
     "datePublished": metadata.date,
     "dateModified": metadata.date,
-    "mainEntityOfPage": { "@type": "WebPage", "@id": `https://passwordgens.online/blog/${params.slug}` },
-    "url": `https://passwordgens.online/blog/${params.slug}`,
+    "mainEntityOfPage": { "@type": "WebPage", "@id": `${SITE_URL}/blog/${params.slug}` },
+    "url": `${SITE_URL}/blog/${params.slug}`,
     "image": metadata.image,
-    "articleSection": "Password Security",
-    "keywords": "password security, cybersecurity, password generation",
+    "articleSection": metadata.category || "Password Security",
+    "keywords": metadata.keywords || "password security, cybersecurity, password generation",
     "wordCount": content.split(/\s+/).length,
     "timeRequired": metadata.readTime ? `PT${metadata.readTime.split(' ')[0]}M` : "PT5M"
   };
@@ -101,9 +103,9 @@ export default async function BlogPostPage({ params }) {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://passwordgens.online" },
-      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://passwordgens.online/blog" },
-      { "@type": "ListItem", "position": 3, "name": metadata.title, "item": `https://passwordgens.online/blog/${params.slug}` }
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${SITE_URL}/blog` },
+      { "@type": "ListItem", "position": 3, "name": metadata.title, "item": `${SITE_URL}/blog/${params.slug}` }
     ]
   };
 
@@ -150,6 +152,7 @@ export default async function BlogPostPage({ params }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+
 
       <div className="min-h-screen bg-background">
 

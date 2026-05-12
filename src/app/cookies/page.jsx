@@ -69,8 +69,9 @@ export default function Cookies() {
                         Essential & Functional (LocalStorage)
                       </h3>
                       <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                        We use <strong>LocalStorage</strong> to remember your settings and preferences so you don't have to re-enter them every time you visit. These are strictly functional and do not track you across other websites.
+                        We use <strong>LocalStorage</strong> to remember your settings and preferences so you don&apos;t have to re-enter them every time you visit. These are strictly functional and do not track you across other websites.
                       </p>
+
                       <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 not-prose">
                         <li className="flex items-center gap-2 text-xs text-muted-foreground bg-background p-3 rounded-xl border border-border">
                           <strong>Theme:</strong> Light or Dark mode.
@@ -125,7 +126,7 @@ export default function Cookies() {
                     Updates to This Policy
                   </h2>
                   <p className="text-muted-foreground leading-relaxed">
-                    We may update our Cookie Policy from time to time. Any changes will be posted on this page with an updated "Last updated" date to keep you informed about our data practices.
+                    We may update our Cookie Policy from time to time. Any changes will be posted on this page with an updated &quot;Last updated&quot; date to keep you informed about our data practices.
                   </p>
                 </section>
               </div>

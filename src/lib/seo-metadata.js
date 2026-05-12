@@ -2,8 +2,9 @@ import { siteConfig } from '@/config/site';
 
 const SITE_URL = siteConfig.url;
 const SITE_NAME = siteConfig.name;
-const DEFAULT_IMAGE = '/logo.svg';
-const TWITTER_HANDLE = '@securegen';
+const DEFAULT_IMAGE = siteConfig.branding.logo;
+const TWITTER_HANDLE = siteConfig.branding.twitter;
+
 const LOGO_URL = siteConfig.branding.logo;
 const FAVICON_URL = siteConfig.branding.favicon;
 
@@ -150,7 +151,7 @@ export function generateMetadata(pageMetadata = {}) {
 // Pre-configured metadata for common pages
 export const pageMetadata = {
   home: {
-    title: 'Ultimate Password Generator | Secure & Random Passwords | SecureGen',
+    title: 'Ultimate Password Generator | Secure & Random Passwords',
     description: 'Generate highly secure, random passwords instantly. Customize length, symbols, and numbers. 100% client-side for maximum privacy and modern security standards.',
     keywords: ['password generator', 'strong password generator', 'random password generator', 'free password generator', 'online password generator', 'secure password maker', 'cryptographic password generator', 'password length customizer', 'password strength checker', 'password generator online free'],
     url: '/',
@@ -158,7 +159,8 @@ export const pageMetadata = {
   },
   
   about: {
-    title: 'About SecureGen | Our Mission for Password Security & Privacy',
+    title: 'About Us | Our Mission for Password Security & Privacy',
+
     description: 'Discover SecureGen\'s mission: making the internet safer, one password at a time. Learn how we built a powerful yet simple, privacy-first password generator. Open-source, transparent, and trusted by security-conscious users worldwide.',
     keywords: ['about securegen', 'password security mission', 'privacy-first password tool', 'open source password generator', 'secure password creator', 'password generation technology', 'client-side password security', 'transparent password tool', 'cybersecurity innovation'],
     url: '/about',
@@ -166,7 +168,7 @@ export const pageMetadata = {
   },
 
   blog: {
-    title: 'Password Security Blog | Expert Tips, Guides & Tutorials | SecureGen',
+    title: 'Password Security Blog | Expert Tips, Guides & Tutorials',
     description: 'Expert insights on password security, best practices, and practical guides. Learn password management strategies, multi-factor authentication, phishing prevention, and how to create unbreakable passwords. Updated weekly with actionable security tips.',
     keywords: ['password security blog', 'password tips', 'security tutorials', 'password best practices', 'cybersecurity blog', 'password management guide', 'authentication security', 'phishing prevention', 'password security guide', 'password management tips'],
     url: '/blog',
@@ -175,7 +177,7 @@ export const pageMetadata = {
   },
 
   privacy: {
-    title: 'Privacy Policy | SecureGen - Zero Data Collection Guarantee',
+    title: 'Privacy Policy | Zero Data Collection Guarantee',
     description: 'Our Privacy Policy: SecureGen prioritizes your privacy with 100% client-side password generation. No personal data collection, no tracking cookies, no server storage. Review our commitment to zero-data privacy and transparent data practices.',
     keywords: ['privacy policy', 'data privacy', 'zero data collection', 'client-side privacy', 'no tracking', 'password privacy guarantee', 'data security policy', 'user privacy protection', 'transparent privacy policy'],
     url: '/privacy',
@@ -187,7 +189,7 @@ export const pageMetadata = {
   },
 
   terms: {
-    title: 'Terms of Service | SecureGen Password Generator',
+    title: 'Terms of Service',
     description: 'SecureGen Terms of Service. Review our usage terms, legal disclaimers, and service agreement. Free, open-source password generator provided as-is. Understand your rights and our responsibilities.',
     keywords: ['terms of service', 'usage terms', 'legal disclaimer', 'password generator agreement', 'service terms', 'user agreement', 'acceptable use policy', 'liability disclaimer'],
     url: '/terms',
@@ -199,11 +201,12 @@ export const pageMetadata = {
   },
   
   cookies: {
-    title: 'Cookie Policy | SecureGen - How We Use Cookies',
+    title: 'Cookie Policy | How We Use Cookies',
     description: 'Learn about how SecureGen uses cookies and local storage to provide a better, more secure experience. Transparent disclosure of analytics and preference tracking.',
     keywords: ['cookie policy', 'securegen cookies', 'local storage usage', 'analytics cookies', 'privacy settings', 'browser storage', 'cookie disclosure'],
     url: '/cookies',
     ogImageAlt: 'SecureGen Cookie Policy',
   },
 };
+
 

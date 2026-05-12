@@ -33,7 +33,7 @@ export default function Terms() {
                   Acceptance of Terms
                 </h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  By accessing and using SecureGen (the "Service"), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use the Service.
+                  By accessing and using SecureGen (the &quot;Service&quot;), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use the Service.
                 </p>
               </section>
 
@@ -43,7 +43,7 @@ export default function Terms() {
                   Description of Service
                 </h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  SecureGen is a free, web-based utility for generating cryptographically secure passwords. All generation processes occur client-side within the user's browser using the Web Crypto API.
+                  SecureGen is a free, web-based utility for generating cryptographically secure passwords. All generation processes occur client-side within the user&apos;s browser using the Web Crypto API.
                 </p>
               </section>
 
@@ -64,7 +64,7 @@ export default function Terms() {
                 </h2>
                 <div className="p-6 rounded-2xl bg-muted/30 border border-border">
                   <p className="font-bold mb-4 text-foreground">
-                    THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED.
+                    THE SERVICE IS PROVIDED &quot;AS IS&quot; AND &quot;AS AVAILABLE&quot; WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED.
                   </p>
                   <p className="text-muted-foreground mb-4">
                     SecureGen and its developers shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from:

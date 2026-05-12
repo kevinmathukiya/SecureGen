@@ -74,7 +74,7 @@ export default function BlogList({ posts }) {
             </svg>
           </div>
           <h3 className="text-xl font-bold mb-2 text-foreground">No articles found</h3>
-          <p className="text-muted-foreground text-sm">Try adjusting your search or filter to find what you're looking for.</p>
+          <p className="text-muted-foreground text-sm">Try adjusting your search or filter to find what you&apos;re looking for.</p>
           <button 
             onClick={() => { setSearchQuery(''); setActiveCategory('All'); }}
             className="mt-6 text-primary font-bold text-sm hover:underline"

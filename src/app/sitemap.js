@@ -1,7 +1,9 @@
 import { getBlogPosts } from '../lib/blog.js';
+import { siteConfig } from '../config/site.js';
 
 export default async function sitemap() {
-  const baseUrl = 'https://passwordgens.online';
+  const baseUrl = siteConfig.url;
+
   
   // Use a more stable date for static pages to avoid "fake" daily updates
   // This is better for Google's trust

@@ -13,5 +13,7 @@ export const siteConfig = {
   branding: {
     logo: "/logo.svg",
     favicon: "/favicon.svg",
+    twitter: "@securegen",
   }
 };
+

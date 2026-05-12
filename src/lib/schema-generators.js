@@ -1,7 +1,11 @@
+import { siteConfig } from '@/config/site';
+
 /**
  * Reusable schema generators for SEO
  * Generates FAQ, HowTo, Breadcrumb, and other structured data
  */
+
+const SITE_URL = siteConfig.url;
 
 export const generateFAQSchema = (faqs) => {
   return {
@@ -42,7 +46,7 @@ export const generateBreadcrumbSchema = (breadcrumbs) => {
       "@type": "ListItem",
       "position": index + 1,
       "name": crumb.name,
-      "item": `https://passwordgens.online${crumb.url}`
+      "item": crumb.url.startsWith('http') ? crumb.url : `${SITE_URL}${crumb.url}`
     }))
   };
 };
@@ -51,17 +55,17 @@ export const generateOrganizationSchema = () => {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "SecureGen",
-    "url": "https://passwordgens.online",
-    "logo": "https://passwordgens.online/logo.svg",
-    "description": "Free, secure, privacy-focused password generator",
+    "name": siteConfig.name,
+    "url": SITE_URL,
+    "logo": `${SITE_URL}${siteConfig.branding.logo}`,
+    "description": siteConfig.description,
     "sameAs": [
-      "https://github.com/kevinmathukiya/SecureGen"
+      siteConfig.links.github
     ],
     "contactPoint": {
       "@type": "ContactPoint",
       "contactType": "Support",
-      "url": "https://passwordgens.online"
+      "url": SITE_URL
     }
   };
 };
@@ -70,13 +74,13 @@ export const generateWebSiteSchema = () => {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "SecureGen",
-    "url": "https://passwordgens.online",
+    "name": siteConfig.name,
+    "url": SITE_URL,
     "potentialAction": {
       "@type": "SearchAction",
       "target": {
         "@type": "EntryPoint",
-        "urlTemplate": "https://passwordgens.online/?q={search_term_string}"
+        "urlTemplate": `${SITE_URL}/?q={search_term_string}`
       },
       "query-input": "required name=search_term_string"
     }
@@ -89,7 +93,7 @@ export const generateSoftwareApplicationSchema = (name, description, url, versio
     "@type": "SoftwareApplication",
     "name": name,
     "description": description,
-    "url": url,
+    "url": url || SITE_URL,
     "softwareVersion": version,
     "applicationCategory": "SecurityApplication",
     "operatingSystem": "Any",
@@ -105,6 +109,14 @@ export const generateSoftwareApplicationSchema = (name, description, url, versio
     }
   };
 };
+
+
+export const homePageFAQs = [
+  { question: "Can I use SecureGen for all my accounts?", answer: "Yes. Use unique passwords for each service. SecureGen makes it easy to create different keys for every platform." },
+  { question: "Do you store my generated passwords?", answer: "Never. SecureGen is architected as a zero-knowledge service. Values are cleared the moment the window closes." },
+  { question: "What is password entropy?", answer: "Entropy measures randomness. Higher entropy means a password is harder to crack. SecureGen maximizes entropy automatically." },
+  { question: "How often should I update passwords?", answer: "Update critical passwords every 6-12 months, or immediately after any major security breach notification." }
+];
 
 export const strongPasswordFAQs = [
   { question: "What exactly makes a password 'strong'?", answer: "A truly strong password combines length (16+ characters), absolute randomness (no predictable patterns or words), and full character diversity (uppercase, lowercase, numbers, symbols)." },

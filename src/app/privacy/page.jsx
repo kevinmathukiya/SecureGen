@@ -50,7 +50,7 @@ export default function Privacy() {
                       At SecureGen, we prioritize your privacy above all else.
                     </p>
                     <p className="text-muted-foreground leading-relaxed">
-                      Our core service—the password generator—is designed to be <strong>100% client-side</strong>. This means that every password you generate is created locally on your device using your browser's own cryptographic functions.
+                      Our core service—the password generator—is designed to be <strong>100% client-side</strong>. This means that every password you generate is created locally on your device using your browser&apos;s own cryptographic functions.
                     </p>
                   </div>
                   <p className="text-primary font-black text-center text-lg py-4 border-y border-dashed border-primary/30">

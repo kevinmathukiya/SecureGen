@@ -7,6 +7,7 @@ import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { baseMetadata } from '@/lib/seo-metadata'
 import { siteConfig } from '@/config/site'
+import { generateOrganizationSchema } from '@/lib/schema-generators'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -60,22 +61,7 @@ export default function RootLayout({ children }) {
           id="organization-schema"
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "name": siteConfig.name,
-              "url": siteConfig.url,
-              "logo": `${siteConfig.url}${siteConfig.branding.logo}`,
-              "description": siteConfig.description,
-              "sameAs": [
-                "https://github.com/kevinmathukiya/SecureGen"
-              ],
-              "contactPoint": {
-                "@type": "ContactPoint",
-                "contactType": "Customer Support",
-                "url": "https://github.com/kevinmathukiya/SecureGen/issues"
-              }
-            })
+            __html: JSON.stringify(generateOrganizationSchema())
           }}
         />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>

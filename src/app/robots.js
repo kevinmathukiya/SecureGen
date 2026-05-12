@@ -1,3 +1,5 @@
+import { siteConfig } from '@/config/site';
+
 export default function robots() {
   return {
     rules: [
@@ -7,6 +9,7 @@ export default function robots() {
         disallow: ['/api/'],
       },
     ],
-    sitemap: 'https://passwordgens.online/sitemap.xml',
+    sitemap: `${siteConfig.url}/sitemap.xml`,
   }
 }
+

@@ -87,7 +87,7 @@ export default function About() {
                 </div>
                 <h3 className="text-xl font-bold mb-4">Zero Knowledge</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  We don't want your data. By maintaining a zero-knowledge posture, we ensure that we have no access to your digital identities, making our platform inherently secure from server breaches.
+                  We don&apos;t want your data. By maintaining a zero-knowledge posture, we ensure that we have no access to your digital identities, making our platform inherently secure from server breaches.
                 </p>
               </div>
             </div>
@@ -109,7 +109,7 @@ export default function About() {
                       SecureGen leverages the modern standard for browser-based cryptographic operations: the <strong>Web Crypto API</strong>.
                     </p>
                     <p>
-                      Unlike legacy applications that use <code className="text-primary bg-primary/10 px-1.5 py-0.5 rounded">Math.random()</code>, which is inherently predictable, the Web Crypto API utilizes the underlying operating system's true hardware random number generator.
+                      Unlike legacy applications that use <code className="text-primary bg-primary/10 px-1.5 py-0.5 rounded">Math.random()</code>, which is inherently predictable, the Web Crypto API utilizes the underlying operating system&apos;s true hardware random number generator.
                     </p>
                     <p>
                       This provides cryptographically secure entropy, ensuring that every password generated is virtually unguessable and meets the highest standards of modern security.
@@ -184,7 +184,7 @@ export default function About() {
 
                 <h3 className="text-3xl sm:text-4xl font-black mb-6">Transparency is Non-Negotiable</h3>
                 <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
-                  Don't trust black boxes. Audit our code, verify our cryptographic implementation, and join our mission to secure the digital world.
+                  Don&apos;t trust black boxes. Audit our code, verify our cryptographic implementation, and join our mission to secure the digital world.
                 </p>
                 <div className="flex flex-wrap justify-center gap-4">
                   <a
