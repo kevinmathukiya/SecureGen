@@ -1,5 +1,6 @@
 import { generateMetadata as genMeta, pageMetadata } from '@/lib/seo-metadata';
 import { generateBreadcrumbSchema } from '@/lib/schema-generators';
+import { siteConfig } from '@/config/site';
 import Link from 'next/link';
 
 export const metadata = genMeta(pageMetadata.about);
@@ -161,6 +162,8 @@ export default function About() {
                   </div>
                   <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
                     <a
+                      href={siteConfig.links.github}
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-foreground text-background font-bold text-sm hover:opacity-90 transition-opacity"
                     >
@@ -188,6 +191,8 @@ export default function About() {
                 </p>
                 <div className="flex flex-wrap justify-center gap-4">
                   <a
+                    href={siteConfig.links.github}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center rounded-2xl text-base font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 h-14 px-10 shadow-lg shadow-primary/20"
                   >

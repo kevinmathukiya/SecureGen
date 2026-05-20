@@ -1,45 +1,62 @@
 import { getBlogPosts } from '../lib/blog.js';
 import { siteConfig } from '../config/site.js';
+import fs from 'fs';
+import path from 'path';
+
+const getFileModifiedIso = (relativePath) => {
+  const filePath = path.join(process.cwd(), relativePath);
+  if (!fs.existsSync(filePath)) {
+    return new Date().toISOString();
+  }
+  return fs.statSync(filePath).mtime.toISOString();
+};
 
 export default async function sitemap() {
   const baseUrl = siteConfig.url;
-  const now = new Date().toISOString();
   const blogPosts = await getBlogPosts();
+  const staticDates = {
+    home: getFileModifiedIso('src/app/page.jsx'),
+    about: getFileModifiedIso('src/app/about/page.jsx'),
+    privacy: getFileModifiedIso('src/app/privacy/page.jsx'),
+    terms: getFileModifiedIso('src/app/terms/page.jsx'),
+    cookies: getFileModifiedIso('src/app/cookies/page.jsx'),
+    blog: getFileModifiedIso('src/app/blog/page.jsx'),
+  };
 
   const staticPages = [
     {
       url: baseUrl,
-      lastModified: now,
+      lastModified: staticDates.home,
       changeFrequency: 'daily',
       priority: 1.0,
     },
     {
       url: `${baseUrl}/about`,
-      lastModified: now,
+      lastModified: staticDates.about,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/privacy`,
-      lastModified: now,
+      lastModified: staticDates.privacy,
       changeFrequency: 'monthly',
       priority: 0.5,
     },
     {
       url: `${baseUrl}/terms`,
-      lastModified: now,
+      lastModified: staticDates.terms,
       changeFrequency: 'monthly',
       priority: 0.5,
     },
     {
       url: `${baseUrl}/cookies`,
-      lastModified: now,
+      lastModified: staticDates.cookies,
       changeFrequency: 'monthly',
       priority: 0.5,
     },
     {
       url: `${baseUrl}/blog`,
-      lastModified: now,
+      lastModified: staticDates.blog,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
@@ -47,7 +64,7 @@ export default async function sitemap() {
 
   const blogPages = blogPosts.map(post => ({
     url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.date).toISOString(),
+    lastModified: new Date(post.lastModified || post.date).toISOString(),
     changeFrequency: 'monthly',
     priority: 0.7,
   }));

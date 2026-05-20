@@ -1,6 +1,6 @@
 import { generateMetadata as genMeta, pageMetadata } from '@/lib/seo-metadata';
 import { generateBreadcrumbSchema } from '@/lib/schema-generators';
-import Link from 'next/link';
+import { siteConfig } from '@/config/site';
 
 export const metadata = genMeta(pageMetadata.privacy);
 
@@ -123,6 +123,8 @@ export default function Privacy() {
                   <p className="text-muted-foreground leading-relaxed">
                     If you have any questions about this Privacy Policy or our security practices, you can reach out via our {' '}
                     <a
+                      href={siteConfig.links.github}
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="text-primary font-bold hover:underline"
                     >
@@ -138,6 +140,8 @@ export default function Privacy() {
                   Our privacy commitment is backed by our open-source nature. Audit our code to see exactly how we handle your data.
                 </p>
                 <a
+                  href={siteConfig.links.github}
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center rounded-2xl bg-background text-foreground px-8 py-3.5 font-bold hover:opacity-90 transition-all"
                 >

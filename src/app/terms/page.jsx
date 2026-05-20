@@ -1,5 +1,5 @@
 import { generateMetadata as genMeta, pageMetadata } from '@/lib/seo-metadata';
-import Link from 'next/link';
+import { siteConfig } from '@/config/site';
 
 export const metadata = genMeta(pageMetadata.terms);
 
@@ -110,6 +110,8 @@ export default function Terms() {
                 <p className="text-muted-foreground leading-relaxed">
                   The source code for SecureGen is open source and available under the MIT License. You can find the source code and license details on our {' '}
                   <a
+                    href={siteConfig.links.github}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="text-primary font-bold hover:underline"
                   >
@@ -125,6 +127,8 @@ export default function Terms() {
                 <p className="text-muted-foreground">Feel free to open an issue on our repository.</p>
               </div>
               <a
+                href={`${siteConfig.links.github}/issues`}
+                target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-3 rounded-xl bg-primary text-primary-foreground font-bold hover:bg-primary/90 transition-all shadow-lg shadow-primary/20"
               >

@@ -12,13 +12,13 @@ export default function BlogList({ posts }) {
 
   const filteredPosts = useMemo(() => {
     return posts.filter(post => {
-      const matchesSearch = 
+      const matchesSearch =
         post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         post.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
         (post.keywords && post.keywords.toLowerCase().includes(searchQuery.toLowerCase()));
-      
-      const matchesCategory = 
-        activeCategory === 'All' || 
+
+      const matchesCategory =
+        activeCategory === 'All' ||
         post.category?.toLowerCase() === activeCategory.toLowerCase();
 
       return matchesSearch && matchesCategory;
@@ -30,7 +30,7 @@ export default function BlogList({ posts }) {
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 pb-24">
-      
+
       {/* ── Search & Filter Controls ── */}
       <div className="max-w-3xl mx-auto mb-12 space-y-8">
         {/* Search bar */}
@@ -53,11 +53,10 @@ export default function BlogList({ posts }) {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-5 py-2 rounded-xl text-sm font-semibold transition-all whitespace-nowrap shrink-0 border ${
-                activeCategory === cat
+              className={`px-5 py-2 rounded-xl text-sm font-semibold transition-all whitespace-nowrap shrink-0 border ${activeCategory === cat
                   ? 'bg-primary text-primary-foreground border-primary shadow-sm shadow-primary/30'
                   : 'bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground border-transparent'
-              }`}
+                }`}
             >
               {cat}
             </button>
@@ -75,7 +74,7 @@ export default function BlogList({ posts }) {
           </div>
           <h3 className="text-xl font-bold mb-2 text-foreground">No articles found</h3>
           <p className="text-muted-foreground text-sm">Try adjusting your search or filter to find what you&apos;re looking for.</p>
-          <button 
+          <button
             onClick={() => { setSearchQuery(''); setActiveCategory('All'); }}
             className="mt-6 text-primary font-bold text-sm hover:underline"
           >
@@ -97,6 +96,7 @@ export default function BlogList({ posts }) {
                       alt={featuredPost.title}
                       fill
                       priority
+                      sizes="(max-width: 1024px) 100vw, 55vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent to-background/10" />
@@ -164,6 +164,7 @@ export default function BlogList({ posts }) {
                           src={post.image}
                           alt={post.title}
                           fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                           className="object-cover transition-transform duration-700 group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-background/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

@@ -1,11 +1,11 @@
 import { siteConfig } from '@/config/site';
 
-const SITE_URL = siteConfig.url;
+const SITE_URL = siteConfig.url.replace(/\/+$/, '');
 const SITE_NAME = siteConfig.name;
-const DEFAULT_IMAGE = siteConfig.branding.logo;
 const TWITTER_HANDLE = siteConfig.branding.twitter;
 const GOOGLE_SITE_VERIFICATION =
   process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
+const SITE_LANGUAGE = siteConfig.language || 'en-US';
 
 const LOGO_URL = siteConfig.branding.logo;
 const FAVICON_URL = siteConfig.branding.favicon;
@@ -53,7 +53,7 @@ export const baseMetadata = {
   },
   openGraph: {
     type: 'website',
-    locale: 'en_US',
+    locale: SITE_LANGUAGE.replace('-', '_'),
     url: SITE_URL,
     siteName: SITE_NAME,
     title: 'SecureGen - Free Secure Password Generator',
@@ -86,6 +86,9 @@ export const baseMetadata = {
   manifest: '/manifest.json',
   alternates: {
     canonical: SITE_URL,
+    languages: {
+      'en-US': SITE_URL,
+    },
   },
   other: {
     'apple-mobile-web-app-capable': 'yes',
@@ -112,13 +115,15 @@ export function generateMetadata(pageMetadata = {}) {
   } = pageMetadata;
 
   // Build full URL
-  const fullUrl = url ? `${SITE_URL}${url}` : SITE_URL;
+  const pagePath = url || '/';
+  const normalizedPath = pagePath === '/' ? '' : pagePath;
+  const fullUrl = `${SITE_URL}${normalizedPath}`;
 
   // Merge keywords
-  const mergedKeywords = [
+  const mergedKeywords = Array.from(new Set([
     ...baseMetadata.keywords,
     ...keywords,
-  ];
+  ]));
 
   // Build OpenGraph image
   const ogImages = ogImage ? [
@@ -150,6 +155,9 @@ export function generateMetadata(pageMetadata = {}) {
     },
     alternates: {
       canonical: fullUrl,
+      languages: {
+        'en-US': fullUrl,
+      },
     },
     ...(robots && { robots }),
   };

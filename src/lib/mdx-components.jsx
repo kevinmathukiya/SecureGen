@@ -99,15 +99,32 @@ export const mdxComponents = {
                 )}
             </figure>
         ) : null,
-    a: ({ href, children }) => (
-        <Link
-            href={String(href)}
-            className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline"
-            rel="noopener noreferrer"
-        >
-            {children}
-        </Link>
-    ),
+    a: ({ href, children }) => {
+        const safeHref = String(href || '');
+        const isExternal = safeHref.startsWith('http://') || safeHref.startsWith('https://');
+
+        if (isExternal) {
+            return (
+                <a
+                    href={safeHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline"
+                >
+                    {children}
+                </a>
+            );
+        }
+
+        return (
+            <Link
+                href={safeHref}
+                className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline"
+            >
+                {children}
+            </Link>
+        );
+    },
     pre: ({ children }) => (
         <pre className="bg-gray-100 dark:bg-gray-900 p-4 rounded-lg overflow-x-auto !mt-4 !mb-4 text-sm border border-gray-300 dark:border-gray-700">
             {children}

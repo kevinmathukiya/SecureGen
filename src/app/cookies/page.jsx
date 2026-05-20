@@ -1,6 +1,6 @@
 import { generateMetadata as genMeta, pageMetadata } from '@/lib/seo-metadata';
 import { generateBreadcrumbSchema } from '@/lib/schema-generators';
-import Link from 'next/link';
+import { siteConfig } from '@/config/site';
 
 export const metadata = genMeta(pageMetadata.cookies);
 
@@ -137,6 +137,8 @@ export default function Cookies() {
                   Audit our complete source code on GitHub to verify how we implement specific functionalities and handle storage.
                 </p>
                 <a
+                  href={siteConfig.links.github}
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center rounded-2xl bg-primary text-primary-foreground px-8 py-3.5 font-bold hover:scale-105 transition-all shadow-lg shadow-primary/20"
                 >

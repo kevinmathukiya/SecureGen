@@ -1,7 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 import { Logo } from './Logo';
-import { Github, Twitter, Shield } from 'lucide-react';
+import { Github, Shield } from 'lucide-react';
+import { siteConfig } from '@/config/site';
 
 export const Footer = () => {
   return (
@@ -17,6 +18,8 @@ export const Footer = () => {
             </p>
             <div className="flex items-center gap-4">
               <a
+                href={siteConfig.links.github}
+                target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-background border transition-all hover:border-primary hover:text-primary hover:shadow-sm"
                 aria-label="GitHub"
@@ -24,7 +27,7 @@ export const Footer = () => {
                 <Github className="h-4 w-4" />
               </a>
               <a
-                href="#"
+                href="/privacy"
                 className="p-2 rounded-full bg-background border transition-all hover:border-primary hover:text-primary hover:shadow-sm"
                 aria-label="Security Policy"
               >
@@ -41,6 +44,8 @@ export const Footer = () => {
               <li><Link href="/about" className="hover:text-primary transition-colors inline-block py-1">About SecureGen</Link></li>
               <li>
                 <a
+                  href={`${siteConfig.links.github}/issues`}
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-primary transition-colors inline-block py-1"
                 >
