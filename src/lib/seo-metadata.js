@@ -4,6 +4,8 @@ const SITE_URL = siteConfig.url;
 const SITE_NAME = siteConfig.name;
 const DEFAULT_IMAGE = siteConfig.branding.logo;
 const TWITTER_HANDLE = siteConfig.branding.twitter;
+const GOOGLE_SITE_VERIFICATION =
+  process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
 
 const LOGO_URL = siteConfig.branding.logo;
 const FAVICON_URL = siteConfig.branding.favicon;
@@ -16,18 +18,18 @@ export const baseMetadata = {
     template: '%s | SecureGen',
   },
   description: 'Generate highly secure, random passwords instantly. Customize length, symbols, and numbers. 100% client-side for maximum privacy and modern security standards.',
-keywords: [
-  'password generator',
-  'secure password generator',
-  'random password generator',
-  'strong password generator',
-  'online password generator',
-  'cryptographically secure random password',
-  'client-side password generator',
-  'free password generator',
-  'privacy focused password tool',
-  'secure password creator',
-],
+  keywords: [
+    'password generator',
+    'secure password generator',
+    'random password generator',
+    'strong password generator',
+    'online password generator',
+    'cryptographically secure random password',
+    'client-side password generator',
+    'free password generator',
+    'privacy focused password tool',
+    'secure password creator',
+  ],
   authors: [{ name: SITE_NAME }],
   creator: SITE_NAME,
   publisher: SITE_NAME,
@@ -82,13 +84,14 @@ keywords: [
     ],
   },
   manifest: '/manifest.json',
-   alternates: {
+  alternates: {
     canonical: SITE_URL,
   },
   other: {
     'apple-mobile-web-app-capable': 'yes',
     'apple-mobile-web-app-status-bar-style': 'default',
     'mobile-web-app-capable': 'yes',
+    'google-site-verification': GOOGLE_SITE_VERIFICATION,
   },
 };
 
@@ -161,7 +164,7 @@ export const pageMetadata = {
     url: '/',
     ogImageAlt: 'SecureGen - Ultimate Secure Password Generator | Modern Security Standards',
   },
-  
+
   about: {
     title: 'About Us | Our Mission for Password Security & Privacy',
 
@@ -203,7 +206,7 @@ export const pageMetadata = {
       follow: true,
     },
   },
-  
+
   cookies: {
     title: 'Cookie Policy | How We Use Cookies',
     description: 'Learn about how SecureGen uses cookies and local storage to provide a better, more secure experience. Transparent disclosure of analytics and preference tracking.',
