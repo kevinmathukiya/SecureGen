@@ -9,7 +9,6 @@ export default function robots() {
         disallow: ['/api/'],
       },
     ],
-    host: siteConfig.url,
     sitemap: `${siteConfig.url}/sitemap.xml`,
   }
 }
