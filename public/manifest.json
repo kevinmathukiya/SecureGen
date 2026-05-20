@@ -2,27 +2,21 @@
   "name": "SecureGen - Free Secure Password Generator",
   "short_name": "SecureGen",
   "description": "Generate strong, secure passwords instantly. 100% free, secure, and runs entirely in your browser.",
+  "id": "/",
+  "lang": "en-US",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#3b82f6",
   "orientation": "portrait-primary",
+  "categories": ["security", "utilities", "productivity"],
   "icons": [
     {
       "src": "/favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
-    },
-    {
-      "src": "/logo.svg",
-      "sizes": "32x32",
-      "type": "image/svg+xml"
-    },
-    {
-      "src": "/logo.svg",
-      "sizes": "180x180",
-      "type": "image/svg+xml"
     }
   ]
 }

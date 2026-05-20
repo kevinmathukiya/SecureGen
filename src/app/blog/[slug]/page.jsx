@@ -46,6 +46,7 @@ export async function generateMetadata({ params }) {
       ...meta.openGraph,
       type: 'article',
       publishedTime: metadata.date,
+      modifiedTime: metadata.lastModified || metadata.date,
       authors: [metadata.author],
     },
   };
@@ -89,14 +90,16 @@ export default async function BlogPostPage({ params }) {
       "logo": { "@type": "ImageObject", "url": `${SITE_URL}${siteConfig.branding.logo}` }
     },
     "datePublished": metadata.date,
-    "dateModified": metadata.date,
+    "dateModified": metadata.lastModified || metadata.date,
     "mainEntityOfPage": { "@type": "WebPage", "@id": `${SITE_URL}/blog/${params.slug}` },
     "url": `${SITE_URL}/blog/${params.slug}`,
-    "image": metadata.image,
+    "image": metadata.image?.startsWith('http') ? metadata.image : `${SITE_URL}${metadata.image || '/api/og'}`,
     "articleSection": metadata.category || "Password Security",
     "keywords": metadata.keywords || "password security, cybersecurity, password generation",
     "wordCount": content.split(/\s+/).length,
-    "timeRequired": metadata.readTime ? `PT${metadata.readTime.split(' ')[0]}M` : "PT5M"
+    "timeRequired": metadata.readTime ? `PT${metadata.readTime.split(' ')[0]}M` : "PT5M",
+    "inLanguage": "en-US",
+    "isAccessibleForFree": true
   };
 
   const breadcrumbSchema = {
@@ -232,6 +235,7 @@ export default async function BlogPostPage({ params }) {
                     alt={metadata.title}
                     fill
                     priority
+                    sizes="(max-width: 1024px) 100vw, 70vw"
                     className="object-cover"
                   />
                 </div>

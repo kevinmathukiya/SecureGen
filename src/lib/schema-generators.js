@@ -75,15 +75,7 @@ export const generateWebSiteSchema = () => {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": siteConfig.name,
-    "url": SITE_URL,
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": `${SITE_URL}/?q={search_term_string}`
-      },
-      "query-input": "required name=search_term_string"
-    }
+    "url": SITE_URL
   };
 };
 
@@ -101,11 +93,6 @@ export const generateSoftwareApplicationSchema = (name, description, url, versio
       "@type": "Offer",
       "price": "0",
       "priceCurrency": "USD"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "ratingCount": "1284"
     }
   };
 };

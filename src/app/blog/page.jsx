@@ -37,8 +37,9 @@ export default async function BlogPage() {
       "description": post.description,
       "author": { "@type": "Person", "name": post.author },
       "datePublished": post.date,
+      "dateModified": post.lastModified || post.date,
       "url": `${SITE_URL}/blog/${post.slug}`,
-      "image": post.image,
+      "image": post.image?.startsWith('http') ? post.image : `${SITE_URL}${post.image || '/api/og'}`,
       "publisher": { "@type": "Organization", "name": siteConfig.name }
     }))
   };

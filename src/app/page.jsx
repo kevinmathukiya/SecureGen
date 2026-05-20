@@ -218,7 +218,13 @@ export default async function Home() {
                   <Link key={post.slug} href={`/blog/${post.slug}`} className="group relative">
                     <article className="h-full flex flex-col rounded-[48px] border border-border bg-background overflow-hidden transition-all duration-500 hover:shadow-2xl hover:border-primary/40">
                       <div className="relative h-64 sm:h-80 overflow-hidden bg-muted">
-                        <Image src={post.image} alt={post.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                        <Image
+                          src={post.image}
+                          alt={post.title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
                         <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent" />
                       </div>
                       <div className="flex-1 flex flex-col p-10">

@@ -16,6 +16,8 @@ export async function getBlogPosts() {
       const slug = file.replace(/\.mdx$/, '');
       const filePath = path.join(blogDir, file);
       const content = fs.readFileSync(filePath, 'utf8');
+      const fileStats = fs.statSync(filePath);
+      const fileModifiedIso = fileStats.mtime.toISOString();
 
       // Normalize line endings
       const normalizedContent = content.replace(/\r\n/g, '\n');
@@ -28,7 +30,8 @@ export async function getBlogPosts() {
         slug,
         title: 'Untitled',
         description: '',
-        date: new Date().toISOString(),
+        date: fileModifiedIso,
+        lastModified: fileModifiedIso,
         author: 'SecureGen',
         ...parseFrontmatter(frontmatter)
       };
@@ -53,6 +56,8 @@ export async function getBlogPost(slug) {
     }
 
     const content = fs.readFileSync(filePath, 'utf8');
+    const fileStats = fs.statSync(filePath);
+    const fileModifiedIso = fileStats.mtime.toISOString();
     // Normalize line endings
     const normalizedContent = content.replace(/\r\n/g, '\n');
     
@@ -64,7 +69,8 @@ export async function getBlogPost(slug) {
       slug,
       title: 'Untitled',
       description: '',
-      date: new Date().toISOString(),
+      date: fileModifiedIso,
+      lastModified: fileModifiedIso,
       author: 'SecureGen',
       ...parseFrontmatter(frontmatter)
     };

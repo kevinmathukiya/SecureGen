@@ -26,6 +26,7 @@ export const metadata = baseMetadata
 
 export const viewport = {
   themeColor: '#3b82f6',
+  colorScheme: 'light dark',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
@@ -38,24 +39,29 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://www.googletagmanager.com" />
       </head>
       <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased`}>
-        <Script
-          strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.analytics.google}`}
-        />
-        <Script id="gtag-init" strategy="afterInteractive">
-          {`window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', '${siteConfig.analytics.google}');`}
-        </Script>
-        <Script id="clarity-init" strategy="afterInteractive">
-          {`(function(c,l,a,r,i,t,y){
-          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-          })(window, document, "clarity", "script", "${siteConfig.analytics.clarity}");`}
-        </Script>
+        {siteConfig.analytics.google ? (
+          <>
+            <Script
+              strategy="lazyOnload"
+              src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.analytics.google}`}
+            />
+            <Script id="gtag-init" strategy="lazyOnload">
+              {`window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${siteConfig.analytics.google}');`}
+            </Script>
+          </>
+        ) : null}
+        {siteConfig.analytics.clarity ? (
+          <Script id="clarity-init" strategy="lazyOnload">
+            {`(function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "${siteConfig.analytics.clarity}");`}
+          </Script>
+        ) : null}
 
         <Script
           id="organization-schema"

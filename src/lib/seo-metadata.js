@@ -31,6 +31,13 @@ keywords: [
   authors: [{ name: SITE_NAME }],
   creator: SITE_NAME,
   publisher: SITE_NAME,
+  applicationName: SITE_NAME,
+  referrer: 'origin-when-cross-origin',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   robots: {
     index: true,
     follow: true,
@@ -51,7 +58,7 @@ keywords: [
     description: 'Generate strong, secure passwords instantly. 100% free, secure, and runs entirely in your browser.',
     images: [
       {
-        url: `${SITE_URL}${DEFAULT_IMAGE}`,
+        url: `${SITE_URL}/api/og`,
         width: 1200,
         height: 630,
         alt: 'SecureGen - Free Secure Password Generator',
@@ -63,7 +70,7 @@ keywords: [
     title: 'SecureGen - Free Secure Password Generator',
     description: 'Generate strong, secure passwords instantly. 100% free, secure, and runs entirely in your browser.',
     creator: TWITTER_HANDLE,
-    images: [`${SITE_URL}${DEFAULT_IMAGE}`],
+    images: [`${SITE_URL}/api/og`],
   },
   category: 'Security',
   classification: 'Utility',
@@ -72,9 +79,6 @@ keywords: [
       { url: '/favicon.ico', type: 'image/x-icon' },
       { url: FAVICON_URL, type: 'image/svg+xml' },
       { url: LOGO_URL, type: 'image/svg+xml', sizes: '32x32' },
-    ],
-    apple: [
-      { url: '/apple-touch-icon.png' },
     ],
   },
   manifest: '/manifest.json',

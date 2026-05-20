@@ -3,6 +3,7 @@ export const siteConfig = {
   url: "https://passwordgens.online",
   description: "Ultimate free secure & random password generator for modern security standards. 100% client-side privacy.",
   author: "SecureGen",
+  language: "en-US",
   links: {
     github: "https://github.com/kevinmathukiya/SecureGen",
   },
@@ -16,4 +17,3 @@ export const siteConfig = {
     twitter: "@securegen",
   }
 };
-
