@@ -276,7 +276,7 @@ export default async function BlogPostPage({ params }) {
                 prose-a:text-primary prose-a:no-underline hover:prose-a:underline
                 prose-img:rounded-xl prose-img:shadow-md prose-img:mx-auto prose-img:max-w-full prose-img:h-auto
                 prose-code:text-primary prose-code:bg-primary/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:text-sm prose-code:before:content-none prose-code:after:content-none
-                prose-pre:bg-gray-950 prose-pre:text-gray-100 prose-pre:rounded-xl prose-pre:border prose-pre:border-border
+                prose-pre:bg-gray-100 dark:prose-pre:bg-gray-950 prose-pre:text-gray-900 dark:prose-pre:text-gray-100 prose-pre:rounded-xl prose-pre:border prose-pre:border-border
                 prose-blockquote:border-primary/50 prose-blockquote:bg-primary/5 prose-blockquote:rounded-r-xl prose-blockquote:py-1
                 prose-li:my-1 mb-12">
                 <MDXRemote source={content} components={mdxComponents} />

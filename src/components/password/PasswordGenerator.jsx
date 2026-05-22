@@ -87,7 +87,7 @@ export const PasswordGenerator = () => {
                     <Button
                       variant="ghost"
                       size="icon"
-                      className="h-8 w-8 hover:bg-white/5 rounded-lg"
+                      className="h-8 w-8 rounded-lg"
                       onClick={handleGenerate}
                     >
                       <RefreshCw className="h-4 w-4 text-muted-foreground" />
@@ -106,7 +106,7 @@ export const PasswordGenerator = () => {
           <div className="grid grid-cols-2 gap-3">
             <Button
               onClick={copyToClipboard}
-              className="w-full h-12 text-xs font-black uppercase tracking-[0.15em] shadow-lg shadow-primary/20 hover:scale-[1.02] transition-all rounded-xl bg-primary text-primary-foreground"
+              className="w-full h-12 text-xs font-black uppercase tracking-[0.15em] shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform rounded-xl"
             >
               {copied ? (
                 <>
@@ -121,7 +121,7 @@ export const PasswordGenerator = () => {
             <Button
               onClick={handleGenerate}
               variant="secondary"
-              className="w-full h-12 text-xs font-black uppercase tracking-[0.15em] rounded-xl hover:scale-[1.02] transition-all border-border/20 bg-muted/50 hover:bg-muted"
+              className="w-full h-12 text-xs font-black uppercase tracking-[0.15em] rounded-xl hover:scale-[1.02] transition-transform border border-border/20"
             >
               <RefreshCw className="mr-2 h-4 w-4" /> Generate
             </Button>
