@@ -221,6 +221,10 @@ export const pageMetadata = {
     keywords: ['cookie policy', 'securegen cookies', 'local storage usage', 'analytics cookies', 'privacy settings', 'browser storage', 'cookie disclosure'],
     url: '/cookies',
     ogImageAlt: 'SecureGen Cookie Policy',
+    robots: {
+      index: true,
+      follow: true,
+    },
   },
 };
 

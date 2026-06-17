@@ -1,10 +1,22 @@
 import { generateMetadata as genMeta, pageMetadata } from '@/lib/seo-metadata';
+import { generateBreadcrumbSchema } from '@/lib/schema-generators';
 import { siteConfig } from '@/config/site';
 
 export const metadata = genMeta(pageMetadata.terms);
 
 export default function Terms() {
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Terms of Service", url: "/terms" }
+  ]);
+
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+
     <div className="min-h-screen bg-background">
       {/* ── Hero Section ── */}
       <section className="relative pt-16 pb-12 overflow-hidden border-b border-border">
@@ -139,5 +151,6 @@ export default function Terms() {
         </div>
       </section>
     </div>
+    </>
   );
 }

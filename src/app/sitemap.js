@@ -23,6 +23,10 @@ export default async function sitemap() {
     blog: getFileModifiedIso('src/app/blog/page.jsx'),
   };
 
+  const latestPostDate = blogPosts.length > 0
+    ? new Date(Math.max(...blogPosts.map(post => new Date(post.lastModified || post.date).getTime()))).toISOString()
+    : staticDates.blog;
+
   const staticPages = [
     {
       url: baseUrl,
@@ -56,8 +60,8 @@ export default async function sitemap() {
     },
     {
       url: `${baseUrl}/blog`,
-      lastModified: staticDates.blog,
-      changeFrequency: 'weekly',
+      lastModified: latestPostDate,
+      changeFrequency: 'daily',
       priority: 0.9,
     },
   ];
@@ -65,7 +69,7 @@ export default async function sitemap() {
   const blogPages = blogPosts.map(post => ({
     url: `${baseUrl}/blog/${post.slug}`,
     lastModified: new Date(post.lastModified || post.date).toISOString(),
-    changeFrequency: 'monthly',
+    changeFrequency: 'weekly',
     priority: 0.7,
   }));
 

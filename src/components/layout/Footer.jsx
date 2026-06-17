@@ -26,13 +26,13 @@ export const Footer = () => {
               >
                 <Github className="h-4 w-4" />
               </a>
-              <a
+              <Link
                 href="/privacy"
                 className="p-2 rounded-full bg-background border transition-all hover:border-primary hover:text-primary hover:shadow-sm"
                 aria-label="Security Policy"
               >
                 <Shield className="h-4 w-4" />
-              </a>
+              </Link>
             </div>
           </div>
 
